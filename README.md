@@ -5,11 +5,11 @@
 ### 2- Hashem Alsmadi.
 ### 3- Bashar Almhirat.
 
-### To view the group agreement, click => [here](Team Agreement/TeamAgreement.md)
+### To view the group agreement, click => [here](TeamAgreement/TeamAgreement.md)
 
-### To view the Daily Project achievements Report, click => [here](Project Daily Report)
+### To view the Daily Project achievements Report, click => [here](ProjectDailyReport)
 
-### To See the requirements File, click => [here](Project Daily Report/requirements.md)
+### To See the requirements File, click => [here](ProjectDailyReport/requirements.md)
 
 
 ## About Project
