@@ -1,4 +1,4 @@
 package com.midproject.schoolregistrationsystem.Admins;
 
-public class AdminService {
+public interface AdminService {
 }
