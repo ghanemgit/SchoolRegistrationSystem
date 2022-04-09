@@ -1,9 +1,15 @@
 # School Registration System
 
-## Groups Memembers Name
-### 1- Mohammad Ghaenm.
+## Groups Members Name
+### 1- Mohammad Ghanem.
 ### 2- Hashem Alsmadi.
 ### 3- Bashar Almhirat.
+
+### To view the group agreement, click => [here](Team Agreement/TeamAgreement.md)
+
+### To view the Daily Project achievements Report, click => [here](Project Daily Report)
+
+### To See the requirements File, click => [here](Project Daily Report/requirements.md)
 
 
 ## About Project
