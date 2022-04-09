@@ -12,7 +12,7 @@
 #### 2- students can post questions.
 #### 3- teachers can add new students.
 #### 4- teachers can answer student’s questions.
-#### 5-admin can manage students and teachers accounts.
+#### 5- admin can manage students and teachers accounts.
 
 ## Non-Functional Requirements
 #### 1- the system should be able to authenticate users.
