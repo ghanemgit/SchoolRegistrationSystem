@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head >
+
+
+</head>
+<body>
+
+
+<form class="row g-3" action="/login" method="POST">
+  <div class="col-auto">
+    <label for="username" class="visually-hidden">Email</label>
+    <input type="text" class="form-control" id="username" placeholder="User Name" name="username">
+  </div>
+  <div class="col-auto">
+    <label for="password" class="visually-hidden">Password</label>
+    <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+  </div>
+  <div class="col-auto">
+    <button type="submit" class="btn btn-primary mb-3">Confirm identity</button>
+  </div>
+</form>
+</body>
+</html>
