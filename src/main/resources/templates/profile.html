@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-<head ></head>
+<head th:replace="fragments/fragments :: head"></head>
 <body>
 
+<div th:replace="fragments/fragments :: navbar"></div>
+<div th:replace="fragments/fragments :: header"></div>
 
 
 
 <h2>Welcome! Your account details are displayed below.</h2>
+<h3 th:text = "'Username: ' + ${displayedUser.getUsername()}"></h3>
 <!--<h3 th:text = "'Username: ' + ${displayedUser.getUsername()}"></h3>-->
 <!--<img src="../static/images/profile.png" th:src="@{/images/profile.png}" th:alt="${displayedUser.getUsername()}" style="width: 150px; height: 150px;"/>-->
 <!--<p th:text = "'First Name: ' + ${displayedUser.getFirstName()}"></p>-->
