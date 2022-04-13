@@ -5,10 +5,31 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class StudentHomePage {
 
-    @GetMapping("/student")
+    @GetMapping("/StudentHomePage")
     public String getHome()
     {
 
         return "StudentHomePage";
+    }
+
+    @GetMapping("/courses")
+    public String getCourses()
+    {
+
+        return "courses";
+    }
+
+    @GetMapping("/grades")
+    public String getGrades()
+    {
+
+        return "grades";
+    }
+
+    @GetMapping("/logout")
+    public String getOut()
+    {
+
+        return "index";
     }
 }
