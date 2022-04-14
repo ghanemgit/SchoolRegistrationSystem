@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, admin-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Teachers Management System</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+<STYLE>
+font-family: 'Helvetica', Arial, Sans-serif;
+color: #404040;
+}
+/* colors */
+.green{background: #b8c765;}
+.yellow{background: #ede487;}
+.red{background: #dd5c5c;}
+.blue{background: #5c90dd;}
+
+/* percents */
+.ten{width: 10%;}
+.twenty{width: 20%;}
+.thirty{width: 30%;}
+.forty{width: 40%;}
+.fifty{width: 50%;}
+.sixty{width: 60%;}
+.seventy{width: 70%;}
+.eighty{width: 80%;}
+.ninety{width: 90%;}
+.onehundred{width: 100%;}
+
+.left{float: left;}
+
+/* li */
+.grades{
+width: 960px;
+margin: 0 auto;
+padding-top: 10px;
+position: relative;
+}
+.grades li{
+border-top: 1px solid #d3d9d9;
+clear: both;
+}
+.grades li:last-child{
+border-bottom: 1px solid #d3d9d9;
+}
+/* progress bar */
+.course{
+width: 815px;
+height: 156px;
+float: left;
+background: white;
+}
+.course h3{
+color: #396eb2;
+font-weight: bold;
+font-size: 20px;
+padding: 14px 0;
+}
+.progress{
+border-right: 1px solid #d3d9d9;
+height: 78px;
+/*background: pink;*/
+}
+.progress label{
+font-size: 10px;
+width: 40px;
+height: 78px;
+background: white;
+display: block;
+text-align: right;
+vertical-align: center;
+padding-right: 6px;
+float: left;
+margin-top: 27px;
+}
+.pts-bar{
+width: 730px;
+height: 24px;
+background: #f3f3f3;
+border: 1px solid #d3d9d9;
+border-radius: 5px;
+float: left;
+margin-top: 26px;
+position: relative;
+}
+.pts-earned{
+height: 20px;
+display: block;
+margin: 2px;
+border-radius: 3px;
+position: absolute;
+top: 0;
+left: 0;
+}
+.pts-possible{
+height: 20px;
+display: block;
+margin: 2px;
+border-radius: 3px;
+position: absolute;
+top: 0;
+left: 0;
+background: #cacaca;
+}
+.pts-value{
+width: 730px;
+height: 18px;
+margin-left: 50px;
+}
+.pts-value span{
+font-size: 10px;
+width: 33.3%;
+padding-top: 4px
+}
+.pts-value span:nth-child(2){
+text-align: center;
+}
+.pts-value span:last-child{
+text-align: right;
+}
+
+/* grade circle */
+.grade{
+width: 144px;
+height: 156px;
+background: #fff;
+/*background: #f6f6f6;*/
+float: left;
+}
+.title, .grade-percentage p{
+text-align: center;
+}
+.title{
+padding-top: 22px;
+color: #404040;
+font-size: 12px;
+}
+.grade-circle{
+width: 66px;
+height: 66px;
+border-radius: 66px;
+position: relative;
+margin: 0 auto;
+margin-top: 20px;
+}
+.grade-percentage{
+width: 50px;
+height: 50px;
+background: #f8f8f8;
+border-radius: 50px;
+position: absolute;
+top: 8px;
+left: 8px;
+box-shadow: -1px 1px 2px rgba(0,0,0,0.3);
+}
+.grade-percentage p{
+font-size: 26px;
+font-weight: bold;
+color: #404040;
+margin-top: 13px
+}
+.grade-percentage p span{
+font-size: 10px;
+vertical-align: top;
+}
+</STYLE>
+    <body>
+
+<div>
+<div th:replace="navigation.html :: topNavigation"></div>
+
+<ul class="grades">
+    <li>
+        <div class="course">
+            <h3>English 2015</h3>
+            <div class="progress">
+                <label>course<br>points</label>
+                <div class="pts-bar">
+                    <span class="pts-possible fifty"></span>
+                    <span class="pts-earned green forty"></span>
+                </div>
+                <div class="pts-value">
+                    <span class="left">0</span>
+                    <span class="left">200</span>
+                    <span class="left">out of 400</span>
+                </div>
+            </div>
+        </div> <!-- end of progress -->
+        <div class="grade">
+            <p class="title">Current Grade</p>
+            <div class="grade-circle green">
+                <div class="grade-percentage">
+                    <p>90<span>%</span></p>
+                </div>
+            </div>
+        </div> <!-- end of grade -->
+    </li>
+
+    <li>
+        <div class="course">
+            <h3>French II 1010</h3>
+            <div class="progress">
+                <label>course<br>points</label>
+                <div class="pts-bar">
+                    <span class="pts-possible eighty"></span>
+                    <span class="pts-earned red sixty"></span>
+                </div>
+                <div class="pts-value">
+                    <span class="left">0</span>
+                    <span class="left">200</span>
+                    <span class="left">out of 400</span>
+                </div>
+            </div>
+        </div> <!-- end of progress -->
+        <div class="grade">
+            <p class="title">Current Grade</p>
+            <div class="grade-circle red">
+                <div class="grade-percentage">
+                    <p>65<span>%</span></p>
+                </div>
+            </div>
+        </div> <!-- end of grade -->
+    </li>
+
+    <li>
+        <div class="course">
+            <h3>History 1050</h3>
+            <div class="progress">
+                <label>course<br>points</label>
+                <div class="pts-bar">
+                    <span class="pts-possible seventy"></span>
+                    <span class="pts-earned green sixty"></span>
+                </div>
+                <div class="pts-value">
+                    <span class="left">0</span>
+                    <span class="left">200</span>
+                    <span class="left">out of 400</span>
+                </div>
+            </div>
+        </div> <!-- end of progress -->
+        <div class="grade">
+            <p class="title">Current Grade</p>
+            <div class="grade-circle green">
+                <div class="grade-percentage">
+                    <p>90<span>%</span></p>
+                </div>
+            </div>
+        </div> <!-- end of grade -->
+    </li>
+
+    <li>
+        <div class="course">
+            <h3>Math 1150 (college algebra)</h3>
+            <div class="progress">
+                <label>course<br>points</label>
+                <div class="pts-bar">
+                    <span class="pts-possible forty"></span>
+                    <span class="pts-earned yellow thirty"></span>
+                </div>
+                <div class="pts-value">
+                    <span class="left">0</span>
+                    <span class="left">200</span>
+                    <span class="left">out of 400</span>
+                </div>
+            </div>
+        </div> <!-- end of progress -->
+        <div class="grade">
+            <p class="title">Current Grade</p>
+            <div class="grade-circle yellow">
+                <div class="grade-percentage">
+                    <p>80<span>%</span></p>
+                </div>
+            </div>
+        </div> <!-- end of grade -->
+    </li>
+
+    <li>
+        <div class="course">
+            <h3>Physics 2010</h3>
+            <div class="progress">
+                <label>course<br>points</label>
+                <div class="pts-bar">
+                    <span class="pts-possible ninety"></span>
+                    <span class="pts-earned yellow seventy"></span>
+                </div>
+                <div class="pts-value">
+                    <span class="left">0</span>
+                    <span class="left">200</span>
+                    <span class="left">out of 400</span>
+                </div>
+            </div>
+        </div> <!-- end of progress -->
+        <div class="grade">
+            <p class="title">Current Grade</p>
+            <div class="grade-circle yellow">
+                <div class="grade-percentage">
+                    <p>75<span>%</span></p>
+                </div>
+            </div>
+        </div> <!-- end of grade -->
+    </li>
+</ul>
+</div>
+</body>
+</html>
