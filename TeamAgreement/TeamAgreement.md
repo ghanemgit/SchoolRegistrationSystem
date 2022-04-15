@@ -12,8 +12,8 @@
 ### Each team member has a key strengths in a specific field, which is illustrated as follows:
 
 - **Mohammad Ghanem**  : I can manage team members and distribute tasks.
-- **Hashem Alsmadi** : He can handle with databases and linking tables to each other also he can Transfer data from databases to user interface.
-- **Bashar Almhirat** : He can design the user interface beautifully and deal with bootstrap perfectly.
+- **Hashem Alsmadi** : He can handle with databases and linking tables to each other also he can Transfer data from databases to applicationUser interface.
+- **Bashar Almhirat** : He can design the applicationUser interface beautifully and deal with bootstrap perfectly.
 
 ### How can you best utilize these strengths in the execution of your project?
 #### I can take advantage of these strengths by giving each person the task related to the field in which they are good.

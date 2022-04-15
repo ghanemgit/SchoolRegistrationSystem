@@ -14,18 +14,18 @@
 
 # Scope
 
-#### In the Software we can register as a user and user has of three types, students,teachers and administrator. Administrator has the power to add new user and can edit and delete a user. A student can register as user and can add edit and delete his profile. The administrator can add edit and deleterious marks for the student. All the users can see the marks.
+#### In the Software we can register as a applicationUser and applicationUser has of three types, students,teachers and administrator. Administrator has the power to add new applicationUser and can edit and delete a applicationUser. A student can register as applicationUser and can add edit and delete his profile. The administrator can add edit and deleterious marks for the student. All the applicationUsers can see the marks.
 
 ## Functional Requirements
 
-#### 1- users can sign in.
+#### 1- applicationUsers can sign in.
 #### 2- students can post questions.
 #### 3- teachers can add new students.
 #### 4- teachers can answer student’s questions.
 #### 5- admin can manage students and teachers accounts.
 
 ## Non-Functional Requirements
-#### 1- the system should be able to authenticate users.
-#### 2- the system should be able to authorize users.
+#### 1- the system should be able to authenticate applicationUsers.
+#### 2- the system should be able to authorize applicationUsers.
 #### 3- the system should be active on internet.
 #### 4- The response time in the system must be fast.

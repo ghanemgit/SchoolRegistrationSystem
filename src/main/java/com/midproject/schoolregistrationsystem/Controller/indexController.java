@@ -1,8 +1,8 @@
 package com.midproject.schoolregistrationsystem.Controller;
 
 
-import com.midproject.schoolregistrationsystem.Model.User;
-import com.midproject.schoolregistrationsystem.Service.UserService;
+import com.midproject.schoolregistrationsystem.Model.ApplicationUser;
+import com.midproject.schoolregistrationsystem.Service.ApplicationUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -13,7 +13,7 @@ import java.util.List;
 public class indexController {
 
     @Autowired
-    UserService userService;
+    ApplicationUserService applicationUserService;
 
 //    @GetMapping("/")
 //    public String indexPage(Principal p, Model model){
@@ -31,10 +31,10 @@ public class indexController {
 //
 //    }
 
-    public List<User> findAllExceptUserName(User userName){
-        List<User> users = userService.getAllUsers();
-        users.remove(userName);
-        return users;
+    public List<ApplicationUser> findAllExceptUserName(ApplicationUser applicationUserName){
+        List<ApplicationUser> applicationUsers = applicationUserService.getAllApplicationUser();
+        applicationUsers.remove(applicationUserName);
+        return applicationUsers;
     }
 
 }
