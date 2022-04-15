@@ -1,54 +1,72 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-<head th:replace="fragments/fragments :: head" >
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, admin-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registration and Login</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+
 </head>
-<link rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous">
 <body>
-<div style="z-index: 999">
-  <div th:replace="fragments/fragments :: navbar"></div>
-  <div th:replace="fragments/fragments :: header"></div>
-</div>
+
+
+<nav class="navbar navbar-inverse">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#" th:href="@{/login}">School Management system</a>
+    <!-- Toggler/collapsible Button -->
+</nav>
+
 <br>
 <br>
-<div class = "container">
-  <div class = "row">
-    <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-      <h1 class = "text-center"> login </h1>
-      <div class = "card-body">
-        <form action="/login" method="POST">
-          <div class ="form-group">
-            <label> Username </label>
-            <input
-                    type = "text"
-                    class = "form-control"
-                    id="username" placeholder="User Name" name="username"
-            />
-          </div>
+<br>
+<br>
 
-          <div class ="form-group">
-            <label for="password" class="visually-hidden"> password </label>
-            <input
-                    type = "password"
-                    name = "password"
-                    class = "form-control"
-                    id="password" placeholder="Password"
-            />
-          </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
 
-          <div class = "box-footer">
-            <button type="submit" class = "btn btn-primary">
-              Submit
-            </button>
-          </div>
-        </form>
+            <h1>User Login Page</h1>
+            <form th:action="@{/login}" method="post">
 
-      </div>
+                <div th:if="${param.error}">
+                    <div class="alert alert-danger">Invalid username or password</div>
+                </div>
+                <div th:if="${param.logout}">
+                    <div class="alert alert-danger">You have been logged out</div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="control-label" for="username">Username</label>
+                    <input type="text" id="username" class="form-control" name="username" required autofocus="autofocus"
+                           placeholder="username"/>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="lastName">Password</label>
+                    <input type="password" id="lastName" class="form-control" placeholder="password" name="password"
+                           required autofocus="autofocus"/>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                            <input type="submit" name="login-submit" id="login-submit"
+                                   class="form-control btn btn-primary" value="Log In"/>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="form-group">
+                    <span>New User?<a href="/" th:href="@{users/new}">Register here
+                                </a> </span>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
+
 </body>
 </html>

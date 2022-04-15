@@ -1,21 +1,20 @@
 package com.midproject.schoolregistrationsystem.Enum;
 
-public enum Class {
+public enum Degree {
 
-    CLASSA("Class A"),
-    CLASSB("Class B"),
-    CLASSC("Class C"),
-    CLASSD("Class D"),
-    CLASSE("Class E");
+    JUSTSTUDENT("Just a student"),
+    DIPLOMA("Diploma"),
+    BACHELOR("Bachelor"),
+    MASTER("Master"),
+    DOCTORATE("Doctorate");
 
     private final String displayValue;
 
-    private Class(String displayValue) {
+    private Degree(String displayValue) {
         this.displayValue = displayValue;
     }
 
     public String getDisplayValue() {
         return displayValue;
     }
-
 }

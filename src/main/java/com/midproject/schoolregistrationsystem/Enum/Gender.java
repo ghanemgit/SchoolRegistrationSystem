@@ -1,21 +1,16 @@
 package com.midproject.schoolregistrationsystem.Enum;
 
-public enum Class {
+public enum Gender {
 
-    CLASSA("Class A"),
-    CLASSB("Class B"),
-    CLASSC("Class C"),
-    CLASSD("Class D"),
-    CLASSE("Class E");
+    MALE("Male"),FEMALE("Female");
 
     private final String displayValue;
 
-    private Class(String displayValue) {
+    private Gender(String displayValue) {
         this.displayValue = displayValue;
     }
 
     public String getDisplayValue() {
         return displayValue;
     }
-
 }
