@@ -3,9 +3,7 @@ package com.midproject.schoolregistrationsystem.Model;
 import com.midproject.schoolregistrationsystem.Enum.Degree;
 import com.midproject.schoolregistrationsystem.Enum.Gender;
 import com.midproject.schoolregistrationsystem.Enum.MaterialStatus;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,17 +12,20 @@ import javax.persistence.*;
 import java.util.*;
 
 
+
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
-@Table(name = "Users" , uniqueConstraints = @UniqueConstraint(columnNames = "username"))
-public class User implements UserDetails{
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"username"})})
+public class ApplicationUser implements UserDetails{
 
 
+    @Setter(AccessLevel.NONE)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @Column(name = "id", nullable = false)
+    private Long id;
 
     @Column(name = "username")
     private String userName;
@@ -61,8 +62,8 @@ public class User implements UserDetails{
     private Set<Role> roles = new HashSet<>();
 
 
-    public User(String userName, String password, String firstName, String lastName, Gender gender,
-                String dateOfBirth, String email, MaterialStatus materialStatus, Degree degree) {
+    public ApplicationUser(String userName, String password, String firstName, String lastName, Gender gender,
+                           String dateOfBirth, String email, MaterialStatus materialStatus, Degree degree) {
         this.userName = userName;
         this.password = password;
         this.firstName = firstName;
