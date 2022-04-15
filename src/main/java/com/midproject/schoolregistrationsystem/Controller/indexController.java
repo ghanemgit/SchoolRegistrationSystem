@@ -1,43 +1,40 @@
 package com.midproject.schoolregistrationsystem.Controller;
 
 
-import com.midproject.schoolregistrationsystem.Model.ApplicationUser;
-import com.midproject.schoolregistrationsystem.Repositories.ApplicationUserRepository;
+import com.midproject.schoolregistrationsystem.Model.User;
+import com.midproject.schoolregistrationsystem.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 
 
-import java.security.Principal;
 import java.util.List;
 
 @Controller
 public class indexController {
 
     @Autowired
-    ApplicationUserRepository applicationUserRepository;
+    UserService userService;
 
-    @GetMapping("/")
-    public String indexPage(Principal p, Model model){
-        if(p != null){
-            ApplicationUser user = applicationUserRepository.findUserByUserName(p.getName());
-            model.addAttribute("displayedUser", user);
+//    @GetMapping("/")
+//    public String indexPage(Principal p, Model model){
+//        if(p != null){
+//            ApplicationUser applicationUser = applicationService.findUserByUsername(p.getName());
+//            model.addAttribute("displayedUser", applicationUser);
+//
+//            List<ApplicationUser> applicationUsers = findAllExceptUserName(applicationUser);
+//
+//            model.addAttribute("users", applicationUsers);
+//            return "index";
+//        }else {
+//            return "login";
+//        }
+//
+//    }
 
-            List<ApplicationUser> users = findAllExceptUserName(user);
-
-            model.addAttribute("users", users);
-            return "index";
-        }else {
-            return "login";
-        }
-
-    }
-
-    public List<ApplicationUser> findAllExceptUserName(ApplicationUser userName){
-        List<ApplicationUser> user = applicationUserRepository.findAll();
-        user.remove(userName);
-        return user;
+    public List<User> findAllExceptUserName(User userName){
+        List<User> users = userService.getAllUsers();
+        users.remove(userName);
+        return users;
     }
 
 }

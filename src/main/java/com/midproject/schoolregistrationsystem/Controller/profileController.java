@@ -1,7 +1,7 @@
 package com.midproject.schoolregistrationsystem.Controller;
 
-import com.midproject.schoolregistrationsystem.Model.ApplicationUser;
-import com.midproject.schoolregistrationsystem.Repositories.ApplicationUserRepository;
+import com.midproject.schoolregistrationsystem.Model.User;
+import com.midproject.schoolregistrationsystem.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,12 +12,12 @@ import java.security.Principal;
 public class profileController {
 
     @Autowired
-    ApplicationUserRepository applicationUserRepository;
+    UserRepository userRepository;
 
     @GetMapping("/profile")
     public String getUserprofile(Principal p, Model m){
         try {
-            ApplicationUser currentUser = applicationUserRepository.findUserByUserName(p.getName());
+            User currentUser = userRepository.findUserByUserName(p.getName());
             m.addAttribute("displayedUser", currentUser);
         } catch(Exception e){
             System.out.println(e);

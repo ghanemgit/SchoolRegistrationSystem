@@ -1,6 +1,7 @@
 package com.midproject.schoolregistrationsystem.Security;
 
 
+import com.midproject.schoolregistrationsystem.Service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -34,19 +35,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors().disable()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/signup").permitAll()
+                .antMatchers("users/new").permitAll()
+//                .antMatchers("/profile", "/").permitAll()
+                .antMatchers("/users**").hasAuthority("ADMIN")
+                .antMatchers("/student").hasAuthority("STUDENT")
+                .antMatchers("/teacher").hasAuthority("TEACHER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/profile")
+                .defaultSuccessUrl("/index")
                 .and()
                 .logout()
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/login")
-                .deleteCookies("JSESSIONID");
+                .deleteCookies("JSESSIONID")
+                .and();
     }
 
 

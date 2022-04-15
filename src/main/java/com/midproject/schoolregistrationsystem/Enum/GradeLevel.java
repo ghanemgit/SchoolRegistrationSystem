@@ -1,21 +1,16 @@
 package com.midproject.schoolregistrationsystem.Enum;
 
-public enum Class {
+public enum GradeLevel {
 
-    CLASSA("Class A"),
-    CLASSB("Class B"),
-    CLASSC("Class C"),
-    CLASSD("Class D"),
-    CLASSE("Class E");
+    FRESHMAN("Freshman");
 
     private final String displayValue;
 
-    private Class(String displayValue) {
+    private GradeLevel(String displayValue) {
         this.displayValue = displayValue;
     }
 
     public String getDisplayValue() {
         return displayValue;
     }
-
 }
