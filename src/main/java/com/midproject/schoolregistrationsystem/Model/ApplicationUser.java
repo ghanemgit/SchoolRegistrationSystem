@@ -42,8 +42,8 @@ public class ApplicationUser implements UserDetails{
     @Column(name = "gender")
     private Gender gender;
 
-    @Column(name = "date_of_birth")
-    private String dateOfBirth;
+    @Column(name = "age")
+    private int age;
 
     @Column(name = "email")
     private String email;
@@ -54,6 +54,9 @@ public class ApplicationUser implements UserDetails{
     @Column(name = "degree")
     private Degree degree;
 
+    @Column(name = "role")
+    private String role;
+
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_role",
@@ -61,18 +64,31 @@ public class ApplicationUser implements UserDetails{
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
+    public boolean hasRole(String roleName) {
+        Iterator<Role> iterator = this.roles.iterator();
+        while (iterator.hasNext()) {
+            Role role = iterator.next();
+            if (role.getName().equals(roleName)) {
+                return true;
+            }
+        }
 
-    public ApplicationUser(String userName, String password, String firstName, String lastName, Gender gender,
-                           String dateOfBirth, String email, MaterialStatus materialStatus, Degree degree) {
+        return false;
+    }
+
+
+    public ApplicationUser(String userName, String password, String firstName, String lastName,
+                           Gender gender, int age, String email, MaterialStatus materialStatus, Degree degree, String role) {
         this.userName = userName;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
-        this.dateOfBirth = dateOfBirth;
+        this.age = age;
         this.email = email;
         this.materialStatus = materialStatus;
         this.degree = degree;
+        this.role = role;
     }
 
     @Override
