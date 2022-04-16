@@ -55,6 +55,12 @@ public class ApplicationUserServiceImp implements ApplicationUserService {
     }
 
     @Override
+    public List<ApplicationUser> findAllByRole(String role){
+        return applicationUserRepository.findAllByRole(role);
+
+    }
+
+    @Override
     public String getApplicationUserRoleByUsername(String username) {
         String role="No Role";
 

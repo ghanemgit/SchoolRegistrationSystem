@@ -12,6 +12,7 @@ import java.util.List;
 public interface ApplicationUserRepository extends JpaRepository<ApplicationUser, Long> {
     ApplicationUser findApplicationUserByUserName(String username);
     ApplicationUser findApplicationUserById(Long id);
+    List<ApplicationUser> findAllByRole(String role);
 
     @Query("SELECT user FROM ApplicationUser user WHERE CONCAT(user.firstName, ' ', user.lastName, ' ', user.role, ' ', user.userName, ' ', user.degree, ' ', user.email) LIKE %?1%")
     List<ApplicationUser> search(String keyword);

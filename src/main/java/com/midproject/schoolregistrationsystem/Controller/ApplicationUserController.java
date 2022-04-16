@@ -31,6 +31,14 @@ public class ApplicationUserController {
         return "Users/users";
 
     }
+    @GetMapping("/students")
+    public String listStudent(Model model){
+        System.err.println("Hello from Student endpoint");
+
+        model.addAttribute("users", applicationUserService.findAllByRole("Student"));
+        return "Users/student";
+
+    }
 
     @GetMapping("/users/new")
     public String createUserForm(Model model){

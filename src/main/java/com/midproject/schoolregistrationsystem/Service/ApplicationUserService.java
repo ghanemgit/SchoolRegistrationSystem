@@ -22,4 +22,5 @@ public interface ApplicationUserService {
     String getApplicationUserRoleByUsername(String username);
 
     List<ApplicationUser> listAllBySearch(String keyword);
+    List<ApplicationUser> findAllByRole(String role);
 }
