@@ -71,6 +71,14 @@ public class ApplicationUserServiceImp implements ApplicationUserService {
 
         return role;
     }
+
+    @Override
+    public List<ApplicationUser> listAllBySearch(String keyword) {
+        if (keyword != null) {
+            return applicationUserRepository.search(keyword);
+        }
+        return applicationUserRepository.findAll();
+    }
 }
 
 
