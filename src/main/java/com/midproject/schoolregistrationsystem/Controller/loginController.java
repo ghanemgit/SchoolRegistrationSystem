@@ -19,25 +19,6 @@ public class loginController {
         return "login";
     }
 
-//    @PostMapping("/login")
-//    public String loginWithRole() {
-//
-//    return "redirect:/giveRole/{role}";
-//    }
-//
-//    @GetMapping("/giveRole/{role}")
-//    public String giveRoleToUser(@PathVariable String role, Model model, @ModelAttribute("user") ApplicationUser applicationUser) {
-//
-//        ApplicationUser thisUser = applicationService.getUserById(applicationUser.getId());
-//
-//        if (applicationService.getUserRoleByUsername(thisUser.getUsername()) == "ADMIN")
-//            role = "admin";
-//        if (applicationService.getUserRoleByUsername(thisUser.getUsername()) == "TEACHER")
-//            role = "teacher";
-//        if (applicationService.getUserRoleByUsername(thisUser.getUsername()) == "STUDENT")
-//            role = "student";
-//
-//        return "index";
-//    }
+
 
 }

@@ -18,6 +18,7 @@
     <td th:text="${user.age}"></td>
     <td th:text="${user.degree}"></td>
     <td th:text="${user.role}"></td>
+    <td th:text="${user.username}"></td>
     <!--            <td th:text="${student.Class}"></td>-->
     <td>
         <a th:href="@{/users/edit/{id} (id=${user.getId()})}" class="btn btn-primary">Update</a>
