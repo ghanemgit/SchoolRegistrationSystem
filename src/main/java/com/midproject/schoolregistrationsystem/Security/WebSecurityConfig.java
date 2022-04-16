@@ -42,7 +42,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/statics/**",
                         "/js/**",
                         "/css/**",
-                        "/img/**").permitAll()
+                        "/img/**" , "/courses").permitAll()
                 .antMatchers("/users/**","/").hasAuthority("ADMIN")
                 .antMatchers("/student/**").hasAuthority("STUDENT")
                 .antMatchers("/teacher/**").hasAuthority("TEACHER")

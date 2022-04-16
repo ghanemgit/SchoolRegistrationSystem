@@ -56,7 +56,11 @@ public class ApplicationUser implements UserDetails{
 
     @Column(name = "role")
     private String role;
-
+    @ManyToMany
+    @JoinTable(name = "STUDENT_COURSE",
+            joinColumns = @JoinColumn(name="STUDENT_ID"),
+            inverseJoinColumns = @JoinColumn(name = "COURSE_ID"))
+    private List<Course> courses = new ArrayList<>();
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_role",
@@ -132,7 +136,22 @@ public class ApplicationUser implements UserDetails{
     public boolean isEnabled() {
         return true;
     }
+    public List<Course> getCourses() {
+        return courses;
+    }
 
+    public void addCourse(Course course) {
+        this.courses.add(course);
+    }
+
+    public void removeCourse(Course course) {
+        this.courses.remove(course);
+    }
+
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
 
 
 
