@@ -30,23 +30,36 @@
         </div>
 
         <div class="form-group">
-            <label>Student Email</label>
+            <label>Email</label>
             <input type="text" name="email" th:field="*{email}" placeholder="Email" class="form-control" required/>
         </div>
 
         <div class="form-group">
-            <label>Student first name</label>
+            <label>First Name</label>
             <input type="text" name="firstName" th:field="*{firstName}" placeholder="First Name"
                    class="form-control" required/>
         </div>
 
         <div class="form-group">
-            <label>Student last name</label>
+            <label>Last Name</label>
             <input type="text" name="lastName" th:field="*{lastName}" placeholder="Last Name"
                    class="form-control" required/>
         </div>
 
+        <div class="form-group">
+            <label>Age</label>
+            <input type="number" name="age" th:field="*{age}" placeholder="Age"
+                   class="form-control" required/>
+        </div>
 
+        <div class="form-group">
+            <select class="custom-select"  type="text" name="role" th:field="*{role}" required>
+                <option selected value="Role">Role</option>
+                <option value="Admin">Admin</option>
+                <option value="Teacher">Teacher</option>
+                <option value="Student">Student</option>
+            </select>
+        </div>
 
         <div class="form-group">
             <select class="custom-select" name="degree" required>
@@ -64,10 +77,7 @@
             </select>
         </div>
 
-        <div class="form-group">
-            <label>Data of Birth</label>
-            <input type="text" name="dataOfBirth" th:field="*{dataOfBirth}" placeholder="Birthday" class="form-control" required/>
-        </div>
+
 
 
         <div class="form-group">

@@ -64,7 +64,8 @@ public class ApplicationUserController {
         existingApplicationUser.setFirstName(applicationUser.getFirstName());
         existingApplicationUser.setLastName(applicationUser.getLastName());
         existingApplicationUser.setEmail(applicationUser.getEmail());
-        existingApplicationUser.setDateOfBirth(applicationUser.getDateOfBirth());
+        existingApplicationUser.setAge(applicationUser.getAge());
+        existingApplicationUser.setRole(applicationUser.getRole());
         existingApplicationUser.setDegree(applicationUser.getDegree());
         existingApplicationUser.setGender(applicationUser.getGender());
         existingApplicationUser.setMaterialStatus(applicationUser.getMaterialStatus());
@@ -83,7 +84,17 @@ public class ApplicationUserController {
     }
 
 
+    @GetMapping("/student")
+    public String getStudentHome(){
 
+        return "student";
+    }
+
+    @GetMapping("/teacher")
+    public String getTeacherHome(){
+
+        return "teacher";
+    }
 
 
 }

@@ -19,6 +19,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
 
+    @Autowired
+    private LoginSuccessHandler loginSuccessHandler;
+
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -36,16 +39,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/login").permitAll()
-                .antMatchers("users/new").permitAll()
-//                .antMatchers("/profile", "/").permitAll()
-                .antMatchers("/users**").hasAuthority("ADMIN")
-                .antMatchers("/student").hasAuthority("STUDENT")
-                .antMatchers("/teacher").hasAuthority("TEACHER")
+                .antMatchers("/users/**","/").hasAuthority("ADMIN")
+                .antMatchers("/student/**").hasAuthority("STUDENT")
+                .antMatchers("/teacher/**").hasAuthority("TEACHER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/index")
+                .usernameParameter("username")
+                .successHandler(loginSuccessHandler)
                 .and()
                 .logout()
                 .logoutUrl("/logout")
