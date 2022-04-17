@@ -8,7 +8,7 @@
     <title>Student Management System</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="../../statics/Js.js"></script>
+    <script src="../../static/Js.js"></script>
 
 </head>
 <body>
@@ -17,26 +17,28 @@
 
 <div class="container">
     <div class="row">
-        <h1>List Users</h1>
+        <h1>List of Admins</h1>
     </div>
     <div class="row">
         <div class="col-lg-3">
-            <a th:href="@{/users/new}" class="btn btn-primary btn-sm mb-3">Add User</a>
+            <a th:href="@{/users/new}" class="btn btn-primary btn-sm mb-3">Add Admin</a>
+
             <div th:if="${param.added}">
-                <div class="alert alert-info">User successfully Added</div>
+                <div class="alert alert-info">Admin successfully Added</div>
+
+            </div>
+            <div th:if="${param.deleted}">
+                <div class="alert alert-danger">Admin successfully Deleted</div>
 
             </div>
         </div>
-
-
-
-
 
     </div>
     <br>
     <div class="input-group mb-3">
         <form th:action="@{/search}">
-            <input type="text" class="form-control" name="keyword" aria-describedby="button-addon2" id="keyword" placeholder="Search" size="50" th:value="${keyword}" required />
+            <input type="text" class="form-control" name="keyword" aria-describedby="button-addon2" id="keyword"
+                   placeholder="Search" size="50" th:value="${keyword}" required/>
             <div class="input-group-append">
                 <input class="btn btn-outline-secondary" type="submit" value="Search" id="button-addon2"/>
             </div>
@@ -44,13 +46,6 @@
     </div>
     <br>
 
-
-
-
-    <!-- Students Table-->
-
-
-    <h1>Students</h1>
     <table class="table table-striped table-bordered">
         <thead class="table-dark">
         <div th:replace="Fragments/tableHeadFrag.html :: tableHead"></div>
@@ -58,18 +53,19 @@
         <tbody>
 
         <tr th:each="user: ${users}">
-            <div th:if="${user.userRole.equals('Student')}">
+            <div th:if="${user.userRole.equals('Admin')}">
                 <div th:replace="Fragments/tableBodyFrag.html :: tableBody"></div>
+
             </div>
         </tr>
 
 
         </tbody>
     </table>
+
+
 </div>
-</div>
-</div>
-</div>
-</div>
+
+
 </body>
 </html>
