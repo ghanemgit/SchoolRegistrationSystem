@@ -17,7 +17,7 @@ public class profileController {
     @GetMapping("/profile")
     public String getUserprofile(Principal p, Model m){
         try {
-            ApplicationUser currentApplicationUser = applicationUserRepository.findApplicationUserByUserName(p.getName());
+            ApplicationUser currentApplicationUser = applicationUserRepository.findApplicationUserByUsername(p.getName());
             m.addAttribute("displayedUser", currentApplicationUser);
         } catch(Exception e){
             System.out.println(e);

@@ -28,7 +28,7 @@ public class ApplicationUser implements UserDetails{
     private Long id;
 
     @Column(name = "username")
-    private String userName;
+    private String username;
 
     @Column(name = "password")
     private String password;
@@ -54,19 +54,24 @@ public class ApplicationUser implements UserDetails{
     @Column(name = "degree")
     private Degree degree;
 
-    @Column(name = "role")
-    private String role;
+    @Column(name = "app_user_role")
+    private String userRole;
+
+
     @ManyToMany
     @JoinTable(name = "STUDENT_COURSE",
             joinColumns = @JoinColumn(name="STUDENT_ID"),
             inverseJoinColumns = @JoinColumn(name = "COURSE_ID"))
     private List<Course> courses = new ArrayList<>();
+
+
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_role",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
+
 
     public boolean hasRole(String roleName) {
         Iterator<Role> iterator = this.roles.iterator();
@@ -81,9 +86,9 @@ public class ApplicationUser implements UserDetails{
     }
 
 
-    public ApplicationUser(String userName, String password, String firstName, String lastName,
-                           Gender gender, int age, String email, MaterialStatus materialStatus, Degree degree, String role) {
-        this.userName = userName;
+    public ApplicationUser(String username, String password, String firstName, String lastName,
+                           Gender gender, int age, String email, MaterialStatus materialStatus, Degree degree, String userRole) {
+        this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -92,7 +97,7 @@ public class ApplicationUser implements UserDetails{
         this.email = email;
         this.materialStatus = materialStatus;
         this.degree = degree;
-        this.role = role;
+        this.userRole = userRole;
     }
 
     @Override
@@ -114,7 +119,7 @@ public class ApplicationUser implements UserDetails{
 
     @Override
     public String getUsername() {
-        return userName;
+        return username;
     }
 
     @Override
@@ -154,6 +159,10 @@ public class ApplicationUser implements UserDetails{
     }
 
 
+
+    public void setRole(Role newRole) {
+        roles.add(newRole);
+    }
 
 
 }

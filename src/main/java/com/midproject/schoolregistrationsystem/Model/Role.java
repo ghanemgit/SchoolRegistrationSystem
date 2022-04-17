@@ -21,6 +21,7 @@ public class Role {
     @Column(name = "id", nullable = false)
     private Long id;
 
+
     private String name;
 
     public Role(String name) {

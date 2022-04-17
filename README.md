@@ -5,11 +5,11 @@
 ### 2- Hashem Alsmadi.
 ### 3- Bashar Almhirat.
 
-### To view the group agreement, click => [here](TeamAgreement/TeamAgreement.md)
+### To view the group agreement, click => [here](ProjectReadMeFile/TeamAgreement/TeamAgreement.md)
 
-### To view the Daily Project achievements Report, click => [here](ProjectDailyReport)
+### To view the Daily Project achievements Report, click => [here](ProjectReadMeFile)
 
-### To See the requirements File, click => [here](ProjectDailyReport/BeginWireframes&SoftwareRequirements.md)
+### To See the requirements File, click => [here](ProjectReadMeFile/BeginWireframes&SoftwareRequirements.md)
 
 
 ## About Project
@@ -29,5 +29,3 @@
                                            │   ExampleRepository.java
                                     
  
-## The wireframe for this project
-![wireframe](src/main/resources/templates/Assert/wireframe.png)

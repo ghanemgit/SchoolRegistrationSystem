@@ -58,7 +58,7 @@
         <tbody>
 
         <tr th:each="user: ${users}">
-            <div th:if="${user.role.equals('Student')}">
+            <div th:if="${user.userRole.equals('Student')}">
                 <div th:replace="Fragments/tableBodyFrag.html :: tableBody"></div>
             </div>
         </tr>

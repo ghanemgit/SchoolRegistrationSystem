@@ -13,7 +13,8 @@
 <body>
 
 <br>
-<div th:fragment="studenterForm">
+<div th:fragment="userForm">
+
 
     <div th:object="${user}">
 
@@ -52,8 +53,14 @@
                    class="form-control" required/>
         </div>
 
+
+
+<!--            <div  class="form-group">-->
+<!--                <label for="uRole">Role : <input id="uRole" name="uRole" type="number"></label>-->
+<!--            </div>-->
+
         <div class="form-group">
-            <select class="custom-select"  type="text" name="role" th:field="*{role}" required>
+            <select class="custom-select"  name="role" th:field="*{userRole}" required>
                 <option selected value="Role">Role</option>
                 <option value="Admin">Admin</option>
                 <option value="Teacher">Teacher</option>
@@ -62,16 +69,16 @@
         </div>
 
         <div class="form-group">
-            <select class="custom-select" name="degree" required>
-                <option selected>Degree</option>
+            <select class="custom-select" name="degree"   th:field="*{degree}" required>
+                <option selected value="Degree">Degree</option>
                 <option th:each="degree : ${T(com.midproject.schoolregistrationsystem.Enum.Degree).values()}"
                         th:value="${degree}" th:text="${degree.displayValue}"></option>
             </select>
         </div>
 
         <div class="form-group">
-            <select class="custom-select" name="gender" required>
-                <option selected>Gender</option>
+            <select class="custom-select" name="gender"  th:field="*{gender}" required>
+                <option selected value="Gender">Gender</option>
                 <option th:each="gender : ${T(com.midproject.schoolregistrationsystem.Enum.Gender).values()}"
                         th:value="${gender}" th:text="${gender.displayValue}"></option>
             </select>
@@ -81,8 +88,8 @@
 
 
         <div class="form-group">
-            <select class="custom-select" name="materialStatus" required>
-                <option selected>Material Status</option>
+            <select class="custom-select" name="materialStatus"  th:field="*{materialStatus}" required>
+                <option selected value="MaterialStatus">Material Status</option>
                 <option th:each="materialStatus : ${T(com.midproject.schoolregistrationsystem.Enum.MaterialStatus).values()}"
                         th:value="${materialStatus}" th:text="${materialStatus.displayValue}"></option>
             </select>
