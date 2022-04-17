@@ -1,7 +1,6 @@
 package com.midproject.schoolregistrationsystem.Controller;
 
 import com.midproject.schoolregistrationsystem.Model.ApplicationUser;
-import com.midproject.schoolregistrationsystem.Model.Role;
 import com.midproject.schoolregistrationsystem.Service.ApplicationUserService;
 import com.midproject.schoolregistrationsystem.Service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Iterator;
 import java.util.List;
 
 @Controller
@@ -36,23 +34,44 @@ public class ApplicationUserController {
     @Autowired
     private UserDetailsService userDetailsService;
 
-    @GetMapping("/users")
-    public String listUsers(Model model){
-        System.err.println("Hello from users endpoint");
 
-        model.addAttribute("users", applicationUserService.getAllApplicationUser());
-        return "Users/users";
+    @GetMapping("/profile")
+    public String getProfilePage(){
+
+        return "Admin/index";
+    }
+
+
+    ///////////////////////////Get User from the database according to roles\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+    @GetMapping("/admins")
+    public String listAdmins(Model model){
+
+        model.addAttribute("users", applicationUserService.findAllByRole("Admin"));
+        return "Admin/admins";
 
     }
     @GetMapping("/students")
     public String listStudent(Model model){
-        System.err.println("Hello from Student endpoint");
 
         model.addAttribute("users", applicationUserService.findAllByRole("Student"));
-        return "Users/students";
+        return "Admin/students";
 
     }
 
+    @GetMapping("/teachers")
+    public String listTeachers(Model model){
+
+        model.addAttribute("users", applicationUserService.findAllByRole("Teacher"));
+        return "Admin/teachers";
+
+    }
+    ///////////////////////////Get User from the database according to roles\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+
+
+
+    ///////////////////////////Create New User and giving him the role\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
     @GetMapping("/users/new")
     public String createUserForm(Model model){
 
@@ -60,9 +79,8 @@ public class ApplicationUserController {
         System.err.println("Welcome from users new endpoint");
         ApplicationUser applicationUser = new ApplicationUser();
         model.addAttribute("user", applicationUser);
-        return "Users/createUser";
+        return "Admin/createUser";
     }
-
     @PostMapping("/users/new")
     public String saveAdmin(@ModelAttribute("user") ApplicationUser applicationUser) {
         Long uRole=0L;
@@ -77,7 +95,6 @@ public class ApplicationUserController {
                 , applicationUser.getMaterialStatus()
                 ,applicationUser.getDegree()
                 ,applicationUser.getUserRole());
-
 
         switch (applicationUser.getUserRole()){
             case "Admin":
@@ -103,20 +120,20 @@ public class ApplicationUserController {
 
     }
 
+    ///////////////////////////Create New User and giving him the role\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 
-
-
+    ///////////////////////////////////////////Edit existing User \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
     @GetMapping("/users/edit/{id}")
     public String editUserForm(@PathVariable Long id, Model model){
 
         model.addAttribute("user", applicationUserService.getApplicationUserById(id));
-        return "Users/editUser";
+        return "Admin/editUser";
 
     }
 
     @PostMapping("/users/{id}")
-    public String updateUser(@PathVariable Long id, @ModelAttribute("admin") ApplicationUser applicationUser, Model model){
+    public String updateUser(@PathVariable Long id, @ModelAttribute("admin") ApplicationUser applicationUser){
         Long uRole=0L;
 
 
@@ -130,7 +147,6 @@ public class ApplicationUserController {
         existingApplicationUser.setGender(applicationUser.getGender());
         existingApplicationUser.setMaterialStatus(applicationUser.getMaterialStatus());
         existingApplicationUser.setPassword(passwordEncoder.encode(applicationUser.getPassword()));
-
 
 
         switch (existingApplicationUser.getUserRole()){
@@ -153,8 +169,10 @@ public class ApplicationUserController {
         applicationUserService.updateApplicationUser(existingApplicationUser);
         return "redirect:/users";
     }
+    ///////////////////////////////////////////Edit existing User \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 
+    ///////////////////////////////////////////Delete existing User \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
     @GetMapping("/users/{id}")
     public String deleteUser(@PathVariable Long id){
 
@@ -163,32 +181,18 @@ public class ApplicationUserController {
         return "redirect:/users?deleted";
     }
 
+    ///////////////////////////////////////////Delete existing User \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-    @GetMapping("/student")
-    public String getStudentHome(){
 
-        return "student";
-    }
-
-    @GetMapping("/teacher")
-    public String getTeacherHome(){
-
-        return "teacher";
-    }
-
-    @GetMapping("/test")
-    public String getTestHome(){
-
-        return "test";
-    }
-
+    /////////////////////////////////Search on existing User in the database \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
     @RequestMapping("/search")
     public String searchInDB(Model model, @Param("keyword") String keyword) {
         List<ApplicationUser> listUsers = applicationUserService.listAllBySearch(keyword);
         model.addAttribute("users", listUsers);
         model.addAttribute("keyword", keyword);
 
-        return "Users/users";
+        return "Admins";
     }
+    /////////////////////////////////Search on existing User in the database \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 }
