@@ -1,6 +1,6 @@
 package com.midproject.schoolregistrationsystem.Enum;
 
-public enum Class {
+public enum StudentClass {
 
     CLASSA("Class A"),
     CLASSB("Class B"),
@@ -10,7 +10,7 @@ public enum Class {
 
     private final String displayValue;
 
-    private Class(String displayValue) {
+    private StudentClass(String displayValue) {
         this.displayValue = displayValue;
     }
 

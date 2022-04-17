@@ -22,7 +22,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         System.out.println("-------------------");
         System.out.println("This is username:" + username);
         System.out.println("---------------");
-        ApplicationUser account = applicationUserRepository.findApplicationUserByUserName(username);
+        ApplicationUser account = applicationUserRepository.findApplicationUserByUsername(username);
         if(account == null){
             System.out.print("User Not Found");
             throw new UsernameNotFoundException(username + "Not Found!");

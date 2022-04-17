@@ -18,7 +18,7 @@ public class indexController {
 
 
 
-    @GetMapping("/")
+    @GetMapping("/home")
     public String getIndex(){
 
         return "Users/index";

@@ -20,7 +20,7 @@
             <h1 class="text-center">Update Users</h1>
             <div class="card-body">
                 <form th:action="@{/users/{id} (id=${user.id})}"  method="POST">
-                    <div th:replace="Users/formUser.html"></div>
+                    <div th:replace="Fragments/formUser.html :: userForm"></div>
                 </form>
             </div>
         </div>

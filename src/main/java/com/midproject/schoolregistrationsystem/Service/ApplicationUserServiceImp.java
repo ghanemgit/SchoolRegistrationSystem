@@ -51,12 +51,12 @@ public class ApplicationUserServiceImp implements ApplicationUserService {
 
     @Override
     public ApplicationUser findApplicationUserByUsername(String username) {
-        return applicationUserRepository.findApplicationUserByUserName(username);
+        return applicationUserRepository.findApplicationUserByUsername(username);
     }
 
     @Override
     public List<ApplicationUser> findAllByRole(String role){
-        return applicationUserRepository.findAllByRole(role);
+        return applicationUserRepository.findAllByUserRole(role);
 
     }
 

@@ -1,5 +1,6 @@
 # Begin Wireframes & Software Requirements
 
+
 ## User Stories
 - As a [student], I want [login form] so that [I can easily login and out].
 - As a [admin], I want to [receive an notification when teacher is no longer in service] so that [I can delete him right away]
@@ -7,6 +8,8 @@
 - As a [admin], I want to [receive an notification when teacher is arrived] so that [I can add him up right away]
 - As a [student], I want to [see my latest update] so that [I can keep up and know were am I ]
 
+## The wireframe for this project
+![wireframe](Assert/wireframe.png)
 
 ## Vision
 
