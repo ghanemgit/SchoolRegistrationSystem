@@ -1,67 +1,63 @@
-<!doctype html>
+<!DOCTYPE HTML>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, admin-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Student Management System</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="../../static/Js.js"></script>
 
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Student List</title>
 </head>
+
 <body>
 
-<div th:replace="Fragments/navigation.html :: topNavigation"></div>
-
 <div class="container">
-    <div class="row">
-        <h1>List of Students</h1>
-    </div>
-    <div class="row">
-        <div class="col-lg-3">
-            <a th:href="@{/users/new}" class="btn btn-primary btn-sm mb-3">Add Students</a>
-            <div th:if="${param.added}">
-                <div class="alert alert-info">Student successfully Added</div>
-            </div>
-            <div th:if="${param.deleted}">
-                <div class="alert alert-danger">Student successfully Deleted</div>
 
-            </div>
-        </div>
+    <h3>Student List</h3>
+    <hr>
 
+    <a th:href="@{/courses}"
+       class="btn btn-primary btn-sm mb-3">
+        View All Courses
+    </a>
 
-    </div>
-    <br>
-    <div class="input-group mb-3">
-        <form th:action="@{/search}">
-            <input type="text" class="form-control" name="keyword" aria-describedby="button-addon2" id="keyword"
-                   placeholder="Search" size="50" th:value="${keyword}" required/>
-            <div class="input-group-append">
-                <input class="btn btn-outline-secondary" type="submit" value="Search" id="button-addon2"/>
-            </div>
-        </form>
-    </div>
-    <br>
+    <p class="h4 mb-4">Students</p>
 
-
-    <table class="table table-striped table-bordered">
-        <thead class="table-dark">
-        <div th:replace="Fragments/tableHeadFrag.html :: tableHead"></div>
-        </thead>
-        <tbody>
-
-        <tr th:each="user: ${users}">
-            <div th:if="${user.userRole.equals('Student')}">
-                <div th:replace="Fragments/tableBodyFrag.html :: tableBody"></div>
-            </div>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>Id</th>
+            <th>Student Name</th>
+            <th>Courses</th>
         </tr>
+        </thead>
 
+        <tbody>
+        <tr th:each="temp : ${students}">
+            <td th:text="${temp.id}" />
+            <td th:text="${temp.getUsername()}" />
+<td>
+                <a th:href="@{'/student/'+${temp.id}+'/courses'}">
+                    <p th:if="${temp.courses.isEmpty()}">Add Courses</p>
+                    <p th:if="!${temp.courses.isEmpty()}">View Courses</p>
+                </a>
 
+            </td>
+        </tr>
         </tbody>
     </table>
+
+    <a th:href="@{/students/add}"
+       class="btn btn-primary btn-sm mb-3">
+        Add new Student
+    </a>
+
 </div>
 
 </body>
 </html>
+
+

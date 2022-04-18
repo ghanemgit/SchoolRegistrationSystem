@@ -53,7 +53,7 @@ public class ApplicationUserController {
     @GetMapping("/students")
     public String listStudent(Model model){
 
-        model.addAttribute("users", applicationUserService.findAllByRole("Student"));
+        model.addAttribute("students", applicationUserService.findAllByRole("Student"));
         return "Admin/students";
 
     }
@@ -116,7 +116,7 @@ public class ApplicationUserController {
         newApplicationUser.setPassword(passwordEncoder.encode(newApplicationUser.getPassword()));
         applicationUserService.saveNewApplicationUser(newApplicationUser);
 
-        return "redirect:/users?added";
+        return "redirect:/teachers";
 
     }
 
