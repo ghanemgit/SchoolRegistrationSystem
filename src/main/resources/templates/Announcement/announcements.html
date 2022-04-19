@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -8,20 +8,20 @@
     <title>Student Management System</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="../../static/Js.js"></script>
+    <link rel="stylesheet" href="../../static/style.css">
 
 </head>
 <body>
 
 <div th:replace="Fragments/adminNav.html :: topNavigation"></div>
 <br>
-<h1>Announcements Management</h1>
+<h1 style="margin-left: 20px">Announcements Management</h1>
 <hr>
 <br>
-<a th:href="@{/announcement/add}" class="btn btn-primary btn-lg btn-inline" style="margin-left: 100px">Add New Announcement</a>
+<a th:href="@{/announcement/add}" class="btn btn-primary btn-lg btn-inline" style="margin-left: 40px">Add New Announcement</a>
 
-<div class="container">
-
+<div class="container containerAnno">
+    <br>
     <div class="row">
         <div class="col-lg-3">
 
@@ -61,6 +61,7 @@
         <thead class="table-dark">
         <tr>
             <th>Id</th>
+            <th>Username</th>
             <th>Creation Time</th>
             <th>Department</th>
             <th>Description</th>
@@ -72,9 +73,10 @@
 
         <tr th:each="announcement: ${announcements}">
             <td th:text="${announcement.id}"></td>
+            <td th:text="${username}"></td>
             <td th:text="${announcement.getCreatedAt()}"></td>
             <td th:text="${announcement.getDepartment().getDisplayValue()}"></td>
-            <td th:text="${announcement.getDescription()}"></td>
+            <td th:text="${announcement.getDescription()}" style="width: 40%;"></td>
             <td>
                 <a th:href="@{/announcement/edit/{id} (id=${announcement.getId()})}" class="btn btn-primary">Update</a>
                 <a th:href="@{/announcement/{id} (id=${announcement.getId()})}" class="btn btn-danger">Delete</a>
