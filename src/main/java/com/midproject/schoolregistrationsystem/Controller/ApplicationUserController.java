@@ -87,9 +87,7 @@ public class ApplicationUserController {
 
 
         newApplicationUser.setRole(roleService.findRoleById(uRole));
-
-        Authentication authentication = new UsernamePasswordAuthenticationToken(newApplicationUser, null, newApplicationUser.getAuthorities());
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+        
 
         newApplicationUser.setPassword(passwordEncoder.encode(newApplicationUser.getPassword()));
         applicationUserService.saveNewApplicationUser(newApplicationUser);
@@ -136,8 +134,6 @@ public class ApplicationUserController {
 
         existingApplicationUser.setRole(roleService.findRoleById(uRole));
 
-        Authentication authentication = new UsernamePasswordAuthenticationToken(existingApplicationUser, null, existingApplicationUser.getAuthorities());
-        SecurityContextHolder.getContext().setAuthentication(authentication);
 
         applicationUserService.updateApplicationUser(existingApplicationUser);
         return "redirect:/users?updated";
