@@ -25,4 +25,5 @@ public interface ApplicationUserService {
     List<ApplicationUser> findAllByRole(String role);
 
     Long stringRoleToLong(String roleToLong);
+
 }

@@ -4,6 +4,7 @@ import com.midproject.schoolregistrationsystem.Model.Announcement;
 import com.midproject.schoolregistrationsystem.Model.ApplicationUser;
 import com.midproject.schoolregistrationsystem.Service.AnnouncementsService;
 import com.midproject.schoolregistrationsystem.Service.ApplicationUserService;
+import com.midproject.schoolregistrationsystem.Service.ApplicationUserServiceImp;
 import com.midproject.schoolregistrationsystem.Service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -23,7 +24,7 @@ import java.util.List;
 public class ApplicationUserController {
 
     @Autowired
-    ApplicationUserService applicationUserService;
+    ApplicationUserServiceImp applicationUserService;
 
     @Autowired
     private PasswordEncoder passwordEncoder;

@@ -15,6 +15,8 @@ public interface ApplicationUserRepository extends JpaRepository<ApplicationUser
     ApplicationUser findApplicationUserById(Long id);
     List<ApplicationUser> findAllByUserRole(String role);
 
+    @Override
+    void deleteById(Long aLong);
 
     @Query("SELECT user FROM ApplicationUser user WHERE CONCAT(user.firstName, ' ', user.lastName, ' ', user.userRole, ' ', user.username, ' ', user.degree, ' ', user.email) LIKE %?1%")
     List<ApplicationUser> search(String keyword);
