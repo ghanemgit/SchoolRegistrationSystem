@@ -13,7 +13,7 @@ public interface ApplicationUserService {
 
     ApplicationUser getApplicationUserById(Long id);
 
-    void updateApplicationUser(ApplicationUser applicationUser);
+    void updateApplicationUser(ApplicationUser applicationUser,Long id);
 
     void deleteApplicationUserById(Long id);
 

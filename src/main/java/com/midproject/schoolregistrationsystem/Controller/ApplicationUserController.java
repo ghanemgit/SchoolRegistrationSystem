@@ -1,14 +1,13 @@
 package com.midproject.schoolregistrationsystem.Controller;
 
+import com.midproject.schoolregistrationsystem.Model.Announcement;
 import com.midproject.schoolregistrationsystem.Model.ApplicationUser;
+import com.midproject.schoolregistrationsystem.Service.AnnouncementsService;
 import com.midproject.schoolregistrationsystem.Service.ApplicationUserService;
 import com.midproject.schoolregistrationsystem.Service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -27,7 +26,8 @@ public class ApplicationUserController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-
+    @Autowired
+    private AnnouncementsService announcementsService;
     @Autowired
     private RoleService roleService;
 
@@ -65,32 +65,8 @@ public class ApplicationUserController {
     }
     @PostMapping("/users/new")
     public String saveUser(@ModelAttribute("user") ApplicationUser applicationUser) {
-        Long uRole=0L;
-        ApplicationUser newApplicationUser = new ApplicationUser(
-                applicationUser.getUsername()
-                ,applicationUser.getPassword()
-                ,applicationUser.getFirstName()
-                ,applicationUser.getLastName()
-                ,applicationUser.getGender()
-                ,applicationUser.getAge()
-                ,applicationUser.getEmail()
-                , applicationUser.getMaterialStatus()
-                ,applicationUser.getDegree()
-                ,applicationUser.getUserRole());
 
-        /*
-        I created this method to take the role as string from the form and replace it by number of type long
-        this is done to store the role of user into user_id-user_role table(1 represent the admin,
-        2 represent the teacher and 3 represent the student
-         */
-        uRole = applicationUserService.stringRoleToLong(applicationUser.getUserRole());
-
-
-        newApplicationUser.setRole(roleService.findRoleById(uRole));
-        
-
-        newApplicationUser.setPassword(passwordEncoder.encode(newApplicationUser.getPassword()));
-        applicationUserService.saveNewApplicationUser(newApplicationUser);
+        applicationUserService.saveNewApplicationUser(applicationUser);
 
         return "redirect:/users?added";
 
@@ -110,32 +86,8 @@ public class ApplicationUserController {
 
     @PostMapping("/users/{id}")
     public String updateUser(@PathVariable Long id, @ModelAttribute("admin") ApplicationUser applicationUser){
-        Long uRole=0L;
 
-
-        ApplicationUser existingApplicationUser = applicationUserService.getApplicationUserById(id);
-        existingApplicationUser.setFirstName(applicationUser.getFirstName());
-        existingApplicationUser.setLastName(applicationUser.getLastName());
-        existingApplicationUser.setEmail(applicationUser.getEmail());
-        existingApplicationUser.setAge(applicationUser.getAge());
-        existingApplicationUser.setUserRole(applicationUser.getUserRole());
-        existingApplicationUser.setDegree(applicationUser.getDegree());
-        existingApplicationUser.setGender(applicationUser.getGender());
-        existingApplicationUser.setMaterialStatus(applicationUser.getMaterialStatus());
-        existingApplicationUser.setPassword(passwordEncoder.encode(applicationUser.getPassword()));
-
-        /*
-        I created this method to take the role as string from the form and replace it by number of type long
-        this is done to store the role of user into user_id-user_role table(1 represent the admin,
-        2 represent the teacher and 3 represent the student
-         */
-        uRole = applicationUserService.stringRoleToLong(existingApplicationUser.getUserRole());
-
-
-        existingApplicationUser.setRole(roleService.findRoleById(uRole));
-
-
-        applicationUserService.updateApplicationUser(existingApplicationUser);
+        applicationUserService.updateApplicationUser(applicationUser,id);
         return "redirect:/users?updated";
     }
     ///////////////////////////////////////////Edit existing User \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -163,5 +115,69 @@ public class ApplicationUserController {
         return "Admin/users";
     }
     /////////////////////////////////Search on existing User in the database \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+
+    /////////////////////////////////Get all stuff about Announcements \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+    @GetMapping("/announcements")
+    public String getAllAnnouncements(Model model){
+
+        model.addAttribute("announcements",announcementsService.getAllAnnouncements());
+        return "Announcement/announcements";
+    }
+
+    @GetMapping("/announcement/add")
+    public String getAnnouncementsForm(Model model){
+
+        Announcement annoYhy = new Announcement();
+
+        model.addAttribute("annoThy",annoYhy);
+
+        return "Announcement/annoForm";
+    }
+    @PostMapping("/announcement/new")
+    public String addNewAnnouncements(@ModelAttribute(name = "annoThy") Announcement announcement){
+
+        announcementsService.addNewAnnouncements(announcement);
+
+        return "redirect:/announcements?added";
+    }
+
+    @GetMapping("/announcement/edit/{id}")
+    public String editAnnoForm(@PathVariable Long id, Model model){
+
+        model.addAttribute("annoThy", announcementsService.getAnnouncementsById(id));
+        return "Announcement/editAnno";
+
+    }
+    @PostMapping("/announcement/{id}")
+    public String updateAnnouncements(@PathVariable Long id,@ModelAttribute(name = "annoThy") Announcement announcement){
+
+        announcementsService.updateAnnouncements(announcement,id);
+
+        return "redirect:/announcements?updated";
+    }
+
+    @GetMapping("/announcement/{id}")
+    public String deleteAnnouncements(@PathVariable Long id){
+
+        announcementsService.deleteAnnouncementsById(id);
+
+        return "redirect:/announcements?deleted";
+    }
+
+    @RequestMapping("/search/anno")
+    public String searchInDBAnno(Model model, @Param("keyword") String keyword) {
+        List<Announcement> listAnno = announcementsService.listAllBySearch(keyword);
+        model.addAttribute("announcements", listAnno);
+        model.addAttribute("keyword", keyword);
+
+        return "Announcement/announcements";
+    }
+
+
+    /////////////////////////////////Get all stuff about Announcements \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
 
 }

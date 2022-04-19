@@ -43,7 +43,7 @@ public class CourseController{
     }
 
     @GetMapping("/{id}")
-    public String findById(@PathVariable("id") int id, Model model)
+    public String findById(@PathVariable("id") Long id, Model model)
     {
         Course course = courseService.findById(id);
         model.addAttribute("course", course);

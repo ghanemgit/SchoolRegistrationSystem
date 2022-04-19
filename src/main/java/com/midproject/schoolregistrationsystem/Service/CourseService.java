@@ -15,7 +15,7 @@ public interface CourseService
 
     public List<Course> findAll();
 
-    public Course findById(int id)  ;
+    public Course findById(Long id)  ;
 
     @Transactional
     public Course save(Course course);

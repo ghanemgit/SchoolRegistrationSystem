@@ -39,6 +39,7 @@ public class ApplicationUser implements UserDetails{
     @Column(name = "last_name")
     private String lastName;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "gender")
     private Gender gender;
 
@@ -48,9 +49,11 @@ public class ApplicationUser implements UserDetails{
     @Column(name = "email")
     private String email;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "material_statues")
     private MaterialStatus materialStatus;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "degree")
     private Degree degree;
 

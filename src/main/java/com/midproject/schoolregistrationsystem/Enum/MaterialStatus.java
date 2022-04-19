@@ -2,12 +2,12 @@ package com.midproject.schoolregistrationsystem.Enum;
 
 public enum MaterialStatus {
 
-    SINGLE("Single"),
-    MARRIED("Married"),
-    DIVORCED("Divorced"),
-    SEPARATED("Separated"),
-    WIDOWED("Widowed"),
-    LIFE_PARTNER("Life Partner");
+    Single("Single"),
+    Married("Married"),
+    Divorced("Divorced"),
+    Separated("Separated"),
+    Widowed("Widowed"),
+    Life_Partner("Life Partner");
 
     private final String displayValue;
 
