@@ -5,6 +5,8 @@ import com.midproject.schoolregistrationsystem.Enum.Department;
 import com.midproject.schoolregistrationsystem.Model.Announcement;
 import com.midproject.schoolregistrationsystem.Repositories.AnnouncementsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,8 +34,13 @@ public class AnnouncementsServiceImp implements AnnouncementsService{
     @Override
     public void updateAnnouncements(Announcement announcement,Long id) {
 
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+
+
         Announcement newAnnouncement = getAnnouncementsById(id);
 
+        newAnnouncement.setPublishedBy(userDetails.getUsername());
         newAnnouncement.setDepartment(announcement.getDepartment());
         newAnnouncement.setDescription(announcement.getDescription());
 
@@ -42,6 +49,10 @@ public class AnnouncementsServiceImp implements AnnouncementsService{
 
     @Override
     public void addNewAnnouncements(Announcement announcement) {
+
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        announcement.setPublishedBy(userDetails.getUsername());
 
         announcementsRepository.save(announcement);
     }

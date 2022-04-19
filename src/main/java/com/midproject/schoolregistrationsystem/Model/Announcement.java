@@ -30,12 +30,16 @@ public class Announcement {
     @Column(name = "department")
     private Department department;
 
+    @Column(name = "published_by")
+    private String publishedBy;
+
     @Column(columnDefinition="TEXT")
     private String description;
 
-    public Announcement(Timestamp createdAt, Department department, String description) {
+    public Announcement(Timestamp createdAt, Department department, String publishedBy, String description) {
         this.createdAt = createdAt;
         this.department = department;
+        this.publishedBy = publishedBy;
         this.description = description;
     }
 }
