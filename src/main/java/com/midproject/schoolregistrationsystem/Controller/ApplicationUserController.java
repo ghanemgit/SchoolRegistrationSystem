@@ -8,6 +8,8 @@ import com.midproject.schoolregistrationsystem.Service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -122,7 +124,8 @@ public class ApplicationUserController {
 
     @GetMapping("/announcements")
     public String getAllAnnouncements(Model model){
-
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("username",userDetails.getUsername());
         model.addAttribute("announcements",announcementsService.getAllAnnouncements());
         return "Announcement/announcements";
     }
