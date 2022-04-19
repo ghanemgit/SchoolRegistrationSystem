@@ -23,4 +23,6 @@ public interface ApplicationUserService {
 
     List<ApplicationUser> listAllBySearch(String keyword);
     List<ApplicationUser> findAllByRole(String role);
+
+    Long stringRoleToLong(String roleToLong);
 }

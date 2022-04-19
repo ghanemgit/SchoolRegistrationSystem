@@ -21,7 +21,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/student")
-@PreAuthorize("hasRole('STUDENT')")
+@PreAuthorize("hasRole('TEACHER')")
 public class StudentController {
 
     @Autowired
@@ -31,30 +31,9 @@ public class StudentController {
     @Autowired
     private CourseServiceImp courseServiceImp ;
 
-    @GetMapping("/profile")
-    public String getProfilePage(Model model){
 
-        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        ApplicationUser applicationUser = applicationUserService.findApplicationUserByUsername(userDetails.getUsername());
 
-        model.addAttribute("username",userDetails.getUsername());
-        model.addAttribute("firstName",applicationUser.getFirstName());
-        model.addAttribute("lastName",applicationUser.getLastName());
-        model.addAttribute("email",applicationUser.getEmail());
-        model.addAttribute("age",applicationUser.getAge());
-        model.addAttribute("gender",applicationUser.getGender().getDisplayValue());
-        model.addAttribute("material",applicationUser.getMaterialStatus().getDisplayValue());
-        model.addAttribute("position",applicationUser.getUserRole());
 
-        return "Student/profile";
-
-    }
-
-    @GetMapping("/courses")
-    public String getCourses(){
-
-        return "Student/courses";
-    }
     @GetMapping("/{id}/courses")
     public String viewCourses(@PathVariable("id") int id, Model model)
     {
@@ -95,7 +74,6 @@ public class StudentController {
         course.addStudent(student);
         courseServiceImp.save(course);
         return "redirect:/student/"+sid+"/courses";
-//        return "Admin/students" ;
 }
 
     @GetMapping("/{sid}/removeCourse")

@@ -1,5 +1,7 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+        lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <head>
     <!-- Required meta tags -->
@@ -7,15 +9,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
     <title>Student List</title>
 </head>
 
 <body>
 
-<div class="container">
+    <div th:replace="Fragments/teacherNav.html :: topNavigation"></div>
 
+
+<div class="container">
+    <br>
+    <br>
+    <br>
+    <br>
     <h3>Student List</h3>
     <hr>
 
@@ -40,7 +49,7 @@
             <td th:text="${temp.id}" />
             <td th:text="${temp.getUsername()}" />
 <td>
-                <a th:href="@{'/student/'+${temp.id}+'/courses'}">
+                <a type="button" class="btn btn-info" th:href="@{'/student/'+${temp.id}+'/courses'}">
                     <p th:if="${temp.courses.isEmpty()}">Add Courses</p>
                     <p th:if="!${temp.courses.isEmpty()}">View Courses</p>
                 </a>

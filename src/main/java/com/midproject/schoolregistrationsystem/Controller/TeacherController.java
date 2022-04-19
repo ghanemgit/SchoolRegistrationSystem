@@ -21,27 +21,5 @@ public class TeacherController {
     private ApplicationUserService applicationUserService;
 
 
-    @GetMapping("/profile")
-    public String getProfilePage(Model model){
-
-        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        ApplicationUser applicationUser = applicationUserService.findApplicationUserByUsername(userDetails.getUsername());
-
-        model.addAttribute("username",userDetails.getUsername());
-        model.addAttribute("firstName",applicationUser.getFirstName());
-        model.addAttribute("lastName",applicationUser.getLastName());
-        model.addAttribute("email",applicationUser.getEmail());
-        model.addAttribute("degree",applicationUser.getDegree().getDisplayValue());
-        model.addAttribute("age",applicationUser.getAge());
-        model.addAttribute("gender",applicationUser.getGender().getDisplayValue());
-        model.addAttribute("material",applicationUser.getMaterialStatus().getDisplayValue());
-        model.addAttribute("position",applicationUser.getUserRole());
-
-        return "Teacher/profile";
-
-    }
-
-
-
 
 }

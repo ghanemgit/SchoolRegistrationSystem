@@ -35,36 +35,20 @@ public class ApplicationUserController {
     private UserDetailsService userDetailsService;
 
 
-    @GetMapping("/profile")
-    public String getProfilePage(){
 
-        return "Admin/index";
-    }
 
 
     ///////////////////////////Get User from the database according to roles\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-    @GetMapping("/admins")
-    public String listAdmins(Model model){
+    @GetMapping("/users")
+    public String listUsers(Model model){
 
-        model.addAttribute("users", applicationUserService.findAllByRole("Admin"));
-        return "Admin/admins";
-
-    }
-    @GetMapping("/students")
-    public String listStudent(Model model){
-
-        model.addAttribute("students", applicationUserService.findAllByRole("Student"));
-        return "Admin/students";
+        model.addAttribute("users", applicationUserService.getAllApplicationUser());
+        return "Admin/users";
 
     }
 
-    @GetMapping("/teachers")
-    public String listTeachers(Model model){
 
-        model.addAttribute("users", applicationUserService.findAllByRole("Teacher"));
-        return "Admin/teachers";
 
-    }
     ///////////////////////////Get User from the database according to roles\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 
@@ -75,14 +59,12 @@ public class ApplicationUserController {
     @GetMapping("/users/new")
     public String createUserForm(Model model){
 
-        //create student object to hold student data
-        System.err.println("Welcome from users new endpoint");
         ApplicationUser applicationUser = new ApplicationUser();
         model.addAttribute("user", applicationUser);
         return "Admin/createUser";
     }
     @PostMapping("/users/new")
-    public String saveAdmin(@ModelAttribute("user") ApplicationUser applicationUser) {
+    public String saveUser(@ModelAttribute("user") ApplicationUser applicationUser) {
         Long uRole=0L;
         ApplicationUser newApplicationUser = new ApplicationUser(
                 applicationUser.getUsername()
@@ -96,17 +78,13 @@ public class ApplicationUserController {
                 ,applicationUser.getDegree()
                 ,applicationUser.getUserRole());
 
-        switch (applicationUser.getUserRole()){
-            case "Admin":
-                uRole=1L;
-                break;
-            case "Teacher":
-                uRole=2L;
-                break;
-            case "Student":
-                uRole=3L;
-                break;
-        }
+        /*
+        I created this method to take the role as string from the form and replace it by number of type long
+        this is done to store the role of user into user_id-user_role table(1 represent the admin,
+        2 represent the teacher and 3 represent the student
+         */
+        uRole = applicationUserService.stringRoleToLong(applicationUser.getUserRole());
+
 
         newApplicationUser.setRole(roleService.findRoleById(uRole));
 
@@ -116,7 +94,7 @@ public class ApplicationUserController {
         newApplicationUser.setPassword(passwordEncoder.encode(newApplicationUser.getPassword()));
         applicationUserService.saveNewApplicationUser(newApplicationUser);
 
-        return "redirect:/teachers";
+        return "redirect:/users?added";
 
     }
 
@@ -148,18 +126,13 @@ public class ApplicationUserController {
         existingApplicationUser.setMaterialStatus(applicationUser.getMaterialStatus());
         existingApplicationUser.setPassword(passwordEncoder.encode(applicationUser.getPassword()));
 
+        /*
+        I created this method to take the role as string from the form and replace it by number of type long
+        this is done to store the role of user into user_id-user_role table(1 represent the admin,
+        2 represent the teacher and 3 represent the student
+         */
+        uRole = applicationUserService.stringRoleToLong(existingApplicationUser.getUserRole());
 
-        switch (existingApplicationUser.getUserRole()){
-            case "Admin":
-                uRole=1L;
-                break;
-            case "Teacher":
-                uRole=2L;
-                break;
-            case "Student":
-                uRole=3L;
-                break;
-        }
 
         existingApplicationUser.setRole(roleService.findRoleById(uRole));
 
@@ -167,7 +140,7 @@ public class ApplicationUserController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         applicationUserService.updateApplicationUser(existingApplicationUser);
-        return "redirect:/users";
+        return "redirect:/users?updated";
     }
     ///////////////////////////////////////////Edit existing User \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -191,7 +164,7 @@ public class ApplicationUserController {
         model.addAttribute("users", listUsers);
         model.addAttribute("keyword", keyword);
 
-        return "Admins";
+        return "Admin/users";
     }
     /////////////////////////////////Search on existing User in the database \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
