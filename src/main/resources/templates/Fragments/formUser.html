@@ -54,11 +54,6 @@
         </div>
 
 
-
-<!--            <div  class="form-group">-->
-<!--                <label for="uRole">Role : <input id="uRole" name="uRole" type="number"></label>-->
-<!--            </div>-->
-
         <div class="form-group">
             <select class="custom-select"  name="role" th:field="*{userRole}" required>
                 <option selected value="Role">Role</option>
@@ -95,29 +90,13 @@
             </select>
         </div>
 
-<!--        <div class="form-group">-->
-<!--            <select class="custom-select" name="gradeLevel" required>-->
-<!--                <option selected>Grade Level</option>-->
-<!--                <option th:each="gradeLevel : ${T(com.mycode.studentresgistrationsystem.Enum.GradeLevel).values()}"-->
-<!--                        th:value="${gradeLevel}" th:text="${gradeLevel.displayValue}"></option>-->
-<!--            </select>-->
-<!--        </div>-->
 
-<!--        <div class="form-group">-->
-<!--            <select class="custom-select" name="class" required>-->
-<!--                <option selected>Select Class</option>-->
-<!--                <option th:each="class : ${T(com.mycode.studentresgistrationsystem.Enum.Class).values()}"-->
-<!--                        th:value="${class}" th:text="${class.displayValue}"></option>-->
-<!--            </select>-->
-<!--        </div>-->
 
         <div class="box-footer">
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </div>
 </div>
-</div>
-</div>
-</div>
+
 </body>
 </html>

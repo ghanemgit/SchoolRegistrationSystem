@@ -2,7 +2,7 @@ package com.midproject.schoolregistrationsystem.Enum;
 
 public enum Gender {
 
-    MALE("Male"),FEMALE("Female");
+    Male("Male"),Female("Female");
 
     private final String displayValue;
 

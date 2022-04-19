@@ -65,9 +65,9 @@ public class StudentController {
     }
 
     @GetMapping("/{sid}/addCourse")
-    public String addCourse(@PathVariable("sid") int sid, @RequestParam("cid") int cid)
+    public String addCourse(@PathVariable("sid") Long sid, @RequestParam("cid") Long cid)
     {
-        ApplicationUser student = applicationUserServiceImp.getApplicationUserById((long) sid);
+        ApplicationUser student = applicationUserServiceImp.getApplicationUserById(sid);
         Course course = courseServiceImp.findById(cid);
         student.addCourse(course);
         applicationUserServiceImp.saveNewApplicationUser(student);
@@ -77,9 +77,9 @@ public class StudentController {
 }
 
     @GetMapping("/{sid}/removeCourse")
-    public String removeCourse(@PathVariable("sid") int sid, @RequestParam("cid") int cid)
+    public String removeCourse(@PathVariable("sid") Long sid, @RequestParam("cid") Long cid)
     {
-        ApplicationUser student = applicationUserServiceImp.getApplicationUserById((long) sid);
+        ApplicationUser student = applicationUserServiceImp.getApplicationUserById(sid);
         Course course = courseServiceImp.findById(cid);
         student.removeCourse(course);
         applicationUserServiceImp.saveNewApplicationUser(student);
