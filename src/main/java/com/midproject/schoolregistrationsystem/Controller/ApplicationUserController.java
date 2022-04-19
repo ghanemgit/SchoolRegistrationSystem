@@ -124,8 +124,7 @@ public class ApplicationUserController {
 
     @GetMapping("/announcements")
     public String getAllAnnouncements(Model model){
-        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("username",userDetails.getUsername());
+
         model.addAttribute("announcements",announcementsService.getAllAnnouncements());
         return "Announcement/announcements";
     }

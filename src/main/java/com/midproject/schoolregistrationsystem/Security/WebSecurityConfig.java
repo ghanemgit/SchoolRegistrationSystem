@@ -19,8 +19,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
 
-    @Autowired
-    private LoginSuccessHandler loginSuccessHandler;
+
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -44,8 +43,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/css/**",
                         "/img/**",
                         "/profile").permitAll()
-                .antMatchers("/users/**","/announcement").hasAuthority("ADMIN")
+                .antMatchers("/users/**","/announcement/**").hasAuthority("ADMIN")
                 .antMatchers("/courses/**","/student/**").hasAuthority("TEACHER")
+                .antMatchers("/my-courses").hasAuthority("STUDENT")
                 .and()
                 .formLogin()
                 .loginPage("/login")

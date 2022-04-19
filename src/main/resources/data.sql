@@ -18,9 +18,13 @@ INSERT INTO application_user (age ,degree , email , first_name , gender , last_n
 VALUES (27,'Just_a_Student','student2@example.com','student2','Female' ,'student2','Married','$2a$10$O9jWFnnr8i/YfMQ/N8uH9ufCPlIk37MdOF0YIOj.vVoZJlgTxXRam','Student','student2');
 
 
+
+
 INSERT INTO role (name) VALUES ('ADMIN'); -- id -> 1
 INSERT INTO role (name) VALUES ('TEACHER'); -- id -> 2
 INSERT INTO role (name) VALUES ('STUDENT'); -- id -> 3
+
+
 
 INSERT INTO course (description, name)
 VALUES ('The Course provides a good insight into cultural ' ||
@@ -45,11 +49,19 @@ VALUES ('This curriculum allows students to learn computer science concepts at t
         'to come. Through CS Connections, K-12 classrooms can explore their usual subjects in ' ||
         'exciting new ways!','Computer Science');
 
-INSERT INTO announcement (created_at,department,description)
-VALUES (LOCALTIMESTAMP,'Finance','Dear students, please note that the last date for paying fees is 1/12/2022.');
-INSERT INTO announcement (created_at,department,description)
-VALUES (LOCALTIMESTAMP,'Admission_and_Registration','Dear students, please note that the last date for registration is 9/9/2022, after which any new registration application will not be considered');
 
+
+INSERT INTO announcement (created_at,department,description,published_by)
+VALUES (LOCALTIMESTAMP,'Finance','Dear students, please note that the last date for paying fees is 1/12/2022.','admin');
+INSERT INTO announcement (created_at,department,description,published_by)
+VALUES (LOCALTIMESTAMP,'Admission_and_Registration','Dear students, please note that the last date for registration is 9/9/2022, after which any new registration application will not be considered','admin');
+
+
+
+INSERT INTO student_course (student_id , course_id) VALUES (5,1) ;
+INSERT INTO student_course (student_id , course_id) VALUES (5,2);
+INSERT INTO student_course (student_id , course_id) VALUES (6,3);
+INSERT INTO student_course (student_id , course_id) VALUES (6,4);
 
 
 
@@ -59,7 +71,5 @@ INSERT INTO user_role (user_id, role_id) VALUES (3, 2); -- account oneal has Adm
 INSERT INTO user_role (user_id, role_id) VALUES (4, 2); -- account oneal has Admin Account
 INSERT INTO user_role (user_id, role_id) VALUES (5, 3); -- account oneal has Admin Account
 INSERT INTO user_role (user_id, role_id) VALUES (6, 3); -- account oneal has Admin Account
--- INSERT INTO user_role (user_id, role_id) VALUES (5, 3); -- account oneal has Admin Account
--- INSERT INTO user_role (user_id, role_id) VALUES (6, 3); -- account oneal has Admin Account
--- INSERT INTO `account_role` (`account_id`, `role_id`) VALUES (1, 1); -- account jason has Student Account
+
 
