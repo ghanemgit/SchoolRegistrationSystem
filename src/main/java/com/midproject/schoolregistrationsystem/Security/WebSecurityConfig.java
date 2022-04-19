@@ -42,16 +42,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/statics/**",
                         "/js/**",
                         "/css/**",
-                        "/img/**" ).permitAll()
-//                .antMatchers("/admins/**","/profile", "/courses , /student/**").hasAuthority("ADMIN")
-//                .antMatchers("/student/**","student/profile").hasAuthority("STUDENT")
-//                .antMatchers("/teacher/**","teacher/profile").hasAuthority("TEACHER")
-                .anyRequest().permitAll()
+                        "/img/**",
+                        "/profile").permitAll()
+                .antMatchers("/users/**").hasAuthority("ADMIN")
+                .antMatchers("/courses/**","/student/**").hasAuthority("TEACHER")
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .usernameParameter("username")
-                .successHandler(loginSuccessHandler)
+                .defaultSuccessUrl("/profile")
                 .and()
                 .logout()
                 .logoutUrl("/logout")

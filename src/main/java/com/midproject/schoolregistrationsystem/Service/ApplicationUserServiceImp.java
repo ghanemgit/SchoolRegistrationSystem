@@ -60,6 +60,8 @@ public class ApplicationUserServiceImp implements ApplicationUserService {
 
     }
 
+
+
     @Override
     public String getApplicationUserRoleByUsername(String username) {
         String role="No Role";
@@ -84,6 +86,26 @@ public class ApplicationUserServiceImp implements ApplicationUserService {
             return applicationUserRepository.search(keyword);
         }
         return applicationUserRepository.findAll();
+    }
+
+    @Override
+    public Long stringRoleToLong(String roleToLong) {
+        Long uRole = 0L;
+
+        switch (roleToLong){
+            case "Admin":
+                uRole=1L;
+                break;
+            case "Teacher":
+                uRole=2L;
+                break;
+            case "Student":
+                uRole=3L;
+                break;
+        }
+
+
+        return uRole;
     }
 }
 

@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class loginController {
 
 
-    @Autowired
-    private ApplicationUserService applicationUserService;
+
 
     @GetMapping("/login")
     public String getLoginPage() {
@@ -20,5 +19,10 @@ public class loginController {
     }
 
 
+    @GetMapping("/")
+    public String getHome(){
+
+        return "redirect:/login";
+    }
 
 }

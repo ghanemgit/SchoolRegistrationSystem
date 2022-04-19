@@ -13,11 +13,15 @@
 </head>
 
 <body>
-<div th:replace="Fragments/navigation.html :: topNavigation"></div>
+<div th:replace="Fragments/teacherNav.html :: topNavigation"></div>
 
 <div class="container">
 
-    <h3>Course List</h3>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h3>Courses List</h3>
     <hr>
 
     <a th:if=${id} th:href="@{'/student/'+${id}+'/addCourses'}"
@@ -30,7 +34,6 @@
         Add New Course
     </a>
 
-    <h4 class="h4 mb-4">Courses</h4>
 
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
@@ -47,11 +50,11 @@
             <td th:text="${temp.id}" />
             <td th:text="${temp.name}" />
             <td>
-                <a th:href="@{'/courses/'+${temp.id}}">View Course</a>
+                <a type="button" class="btn btn-info" th:href="@{'/courses/'+${temp.id}}">View Course</a>
             </td>
             <td th:if="${add_id!=null||remove_id!=null}">
-                <a th:if="${remove_id!=null}" th:href="@{'/student/'+${remove_id}+'/removeCourse?cid='+${temp.id}}">Remove Course</a>
-                <a th:if="${add_id!=null}" th:href="@{'/student/'+${add_id}+'/addCourse?cid='+${temp.id}}">Add Course</a>
+                <a type="button" class="btn btn-danger" th:if="${remove_id!=null}" th:href="@{'/student/'+${remove_id}+'/removeCourse?cid='+${temp.id}}">Remove Course</a>
+                <a type="button" class="btn btn-info" th:if="${add_id!=null}" th:href="@{'/student/'+${add_id}+'/addCourse?cid='+${temp.id}}">Add Course</a>
             </td>
         </tr>
         </tbody>

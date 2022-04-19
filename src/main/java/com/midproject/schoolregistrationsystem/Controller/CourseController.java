@@ -2,8 +2,10 @@ package com.midproject.schoolregistrationsystem.Controller;
 import java.util.List;
 
 import com.midproject.schoolregistrationsystem.Model.Course;
+import com.midproject.schoolregistrationsystem.Service.ApplicationUserService;
 import com.midproject.schoolregistrationsystem.Service.CourseServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,12 +17,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/courses")
-public class CourseController
-{
+@PreAuthorize("hasRole('TEACHER')")
+public class CourseController{
+
+    @Autowired
+    private ApplicationUserService applicationUserService;
     @Autowired
     private CourseServiceImp courseService;
 
-    @GetMapping("")
+    @GetMapping("/students")
+    public String listStudent(Model model){
+
+        model.addAttribute("students", applicationUserService.findAllByRole("Student"));
+        return "Admin/students";
+
+    }
+
+
+    @GetMapping
     public String findAll(Model model)
     {
         List<Course> courses = courseService.findAll();
