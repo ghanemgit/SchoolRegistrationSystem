@@ -1,6 +1,6 @@
 package com.midproject.schoolregistrationsystem.Enum;
 
-public enum MaterialStatus {
+public enum MaritalState {
 
     Single("Single"),
     Married("Married"),
@@ -11,7 +11,7 @@ public enum MaterialStatus {
 
     private final String displayValue;
 
-    private MaterialStatus(String displayValue) {
+    private MaritalState(String displayValue) {
         this.displayValue = displayValue;
     }
 

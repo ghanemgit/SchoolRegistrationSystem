@@ -47,14 +47,16 @@
 
         <tbody>
         <tr th:each="temp : ${courses}">
-            <td th:text="${temp.id}" />
-            <td th:text="${temp.name}" />
+            <td th:text="${temp.id}"/>
+            <td th:text="${temp.name}"/>
             <td>
                 <a type="button" class="btn btn-info" th:href="@{'/courses/'+${temp.id}}">View Course</a>
             </td>
             <td th:if="${add_id!=null||remove_id!=null}">
-                <a type="button" class="btn btn-danger" th:if="${remove_id!=null}" th:href="@{'/student/'+${remove_id}+'/removeCourse?cid='+${temp.id}}">Remove Course</a>
-                <a type="button" class="btn btn-info" th:if="${add_id!=null}" th:href="@{'/student/'+${add_id}+'/addCourse?cid='+${temp.id}}">Add Course</a>
+                <a type="button" class="btn btn-danger" th:if="${remove_id!=null}"
+                   th:href="@{'/student/'+${remove_id}+'/removeCourse?cid='+${temp.id}}">Remove Course</a>
+                <a type="button" class="btn btn-info" th:if="${add_id!=null}"
+                   th:href="@{'/student/'+${add_id}+'/addCourse?cid='+${temp.id}}">Add Course</a>
             </td>
         </tr>
         </tbody>

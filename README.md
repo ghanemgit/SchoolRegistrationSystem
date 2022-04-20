@@ -5,16 +5,16 @@
 ### 2- Hashem Alsmadi.
 ### 3- Bashar Almhirat.
 
-### To view the group agreement, click => [here](ProjectReadMeFile/TeamAgreement/TeamAgreement.md)
+### [Group agreement](ProjectReadMeFile/TeamAgreement/TeamAgreement.md)
 
-### To view the Daily Project achievements Report, click => [here](ProjectReadMeFile)
+### [Daily Project achievements Report](ProjectReadMeFile)
 
-### To See the requirements File, click => [here](ProjectReadMeFile/BeginWireframes&SoftwareRequirements.md)
+### [Begin Wireframes & Software Requirements](ProjectReadMeFile/BeginWireframes&SoftwareRequirements.md)
 
 
 ## About Project
-#### In this project, we will create a web page represent school management system that manages a group of students, where students are added, modified, or deleted from the system by admins. and we will prepare a staff of teachers to teach these students.
-#### In addition, we will create a registration section that will have access to the page, edit, delete and add students, and another section to view and answer student posts by teachers. And don't forget that we will be adding more and more new features.
+#### In this project, we created a web page represent school management system that allow admin(register) to manages a group of students, teachers and other admins, where users are added, modified, or deleted from the system. and we allowed teachers to add courses to system and add/delete students to/from these courses.
+#### And the last thing is we make a section responsible to publish the Advertisement for different department in school and managed by admins.
 
 
 ## How to explore our project
@@ -29,3 +29,38 @@
                                            │   ExampleRepository.java
                                     
  
+
+
+## Screenshot of project
+
+### Login page
+
+![Login page](ProjectReadMeFile/Assert/login.jpg)
+
+### Profile page
+![information](ProjectReadMeFile/Assert/profile1.jpg)
+![Announcements](ProjectReadMeFile/Assert/profile2.jpg)
+
+### Users management page
+![Users management page](ProjectReadMeFile/Assert/userManagementSystem.jpg)
+
+### Add user form
+![Add user form](ProjectReadMeFile/Assert/newUserForm.jpg)
+
+### Announcement management page
+![Announcement management page](ProjectReadMeFile/Assert/AnnoSys.jpg)
+
+### Courses page
+![Courses page](ProjectReadMeFile/Assert/coursesList.jpg)
+
+### Student list page(for Teacher)
+![Student list page](ProjectReadMeFile/Assert/studentList.jpg)
+
+### Add course to student page(by Teacher)
+![Add course to student](ProjectReadMeFile/Assert/addStudentCourse.jpg)
+
+### Student courses page(for Student)
+![Student courses page](ProjectReadMeFile/Assert/studentCourse.jpg)
+
+
+

@@ -13,7 +13,7 @@ public interface ApplicationUserService {
 
     ApplicationUser getApplicationUserById(Long id);
 
-    void updateApplicationUser(ApplicationUser applicationUser,Long id);
+    void updateApplicationUser(ApplicationUser applicationUser, Long id);
 
     void deleteApplicationUserById(Long id);
 
@@ -22,6 +22,7 @@ public interface ApplicationUserService {
     String getApplicationUserRoleByUsername(String username);
 
     List<ApplicationUser> listAllBySearch(String keyword);
+
     List<ApplicationUser> findAllByRole(String role);
 
     Long stringRoleToLong(String roleToLong);

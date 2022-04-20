@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -22,7 +22,7 @@
 
         <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
             <br>
-            <h1 class="text-center">Add Announcements</h1>
+            <h1 class="text-center">Add Announcement</h1>
             <div class="card-body">
                 <form
                         action="#"
@@ -31,18 +31,19 @@
                         method="POST">
 
 
-                        <div class="form-group">
-                            <select class="custom-select" name="department"   th:field="*{department}" required>
-                                <option selected value="Department">Department</option>
-                                <option th:each="department : ${T(com.midproject.schoolregistrationsystem.Enum.Department).values()}"
-                                        th:value="${department}" th:text="${department.getDisplayValue()}"></option>
-                            </select>
-                        </div>
+                    <div class="form-group">
+                        <select class="custom-select" name="department" th:field="*{department}" required>
+                            <option selected value="Department">Department</option>
+                            <option th:each="department : ${T(com.midproject.schoolregistrationsystem.Enum.Department).values()}"
+                                    th:value="${department}" th:text="${department.getDisplayValue()}"></option>
+                        </select>
+                    </div>
 
-                        <div class="form-group">
-                            <label>Description</label>
-                            <textarea rows="10" cols="50" name="description" th:field="*{description}" placeholder="Description" class="form-control" required></textarea>
-                        </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea rows="10" cols="50" name="description" th:field="*{description}"
+                                  placeholder="Description" class="form-control" required></textarea>
+                    </div>
 
                     <button type="submit" class="btn btn-info col-2">Add</button>
                 </form>

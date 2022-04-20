@@ -16,7 +16,7 @@ public interface AnnouncementsService {
 
     void deleteAnnouncementsById(Long id);
 
-    void updateAnnouncements(Announcement announcement,Long id);
+    void updateAnnouncements(Announcement announcement, Long id);
 
     void addNewAnnouncements(Announcement announcement);
 

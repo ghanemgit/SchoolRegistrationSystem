@@ -33,7 +33,7 @@ public class Announcement {
     @Column(name = "published_by")
     private String publishedBy;
 
-    @Column(columnDefinition="TEXT")
+    @Column(columnDefinition = "TEXT")
     private String description;
 
     public Announcement(Timestamp createdAt, Department department, String publishedBy, String description) {

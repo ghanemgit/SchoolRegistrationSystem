@@ -20,7 +20,7 @@ import java.util.List;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Rollback
-public class RoleRepositoryTest {
+public class RepositoriesTest {
     @Autowired
     RoleRepository repo ;
 
@@ -49,7 +49,7 @@ public class RoleRepositoryTest {
     public void findCourse (){
         Course course =new Course("math","science");
         courseServiceImp.save(course);
-        assertNotNull(courseServiceImp.findById(1l));
+        assertNotNull(courseServiceImp.findById(1L));
     }
 
 

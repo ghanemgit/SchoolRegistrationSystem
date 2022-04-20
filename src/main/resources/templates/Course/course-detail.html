@@ -17,7 +17,7 @@
 <body>
 
 
-    <div th:replace="Fragments/teacherNav.html :: topNavigation"></div>
+<div th:replace="Fragments/teacherNav.html :: topNavigation"></div>
 
 
 <div class="container">
@@ -29,20 +29,11 @@
     <h3>Course Details</h3>
     <hr>
 
-<!--    <a th:href="@{/courses}"-->
-<!--       class="btn btn-primary btn-sm mb-3">-->
-<!--        Back to Course List-->
-<!--    </a>-->
-
 
     <h1 class="h4 mb-4" th:text="'Course : ' + ${course.name}"/>
     <p class="h4 mb-4" th:text="'Description : ' + ${course.description}"/>
 
 
-<!--    <a th:href="@{'/students'}"-->
-<!--       class="btn btn-primary btn-sm mb-3">-->
-<!--        Back to Student List-->
-<!--    </a>-->
 </div>
 
 </body>

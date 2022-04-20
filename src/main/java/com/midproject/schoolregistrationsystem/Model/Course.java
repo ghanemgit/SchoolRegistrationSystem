@@ -6,7 +6,13 @@ import java.util.List;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 public class Course {
     @Id
@@ -16,7 +22,7 @@ public class Course {
 
     @Column(unique = true)
     private String name;
-    @Column(unique = false, columnDefinition = "TEXT")
+    @Column(columnDefinition = "TEXT")
     private String description;
 
 
@@ -24,9 +30,6 @@ public class Course {
     @JsonIgnore
     private List<ApplicationUser> students = new ArrayList<>();
 
-
-    public Course() {
-    }
 
     public Course(String name) {
         this.name = name;
@@ -37,28 +40,6 @@ public class Course {
         this.description = description;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-
-    public String getDescription() {
-        return description;
-    }
-
-    public Long getId() { return id; }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public List<ApplicationUser> getStudents() {
-        return students;
-    }
 
     public void addStudent(ApplicationUser student) {
         this.students.add(student);

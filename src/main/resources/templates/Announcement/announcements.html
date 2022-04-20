@@ -18,7 +18,8 @@
 <h1 style="margin-left: 20px">Announcements Management</h1>
 <hr>
 <br>
-<a th:href="@{/announcement/add}" class="btn btn-primary btn-lg btn-inline" style="margin-left: 40px">Add New Announcement</a>
+<a th:href="@{/announcement/add}" class="btn btn-primary btn-lg btn-inline" style="margin-left: 40px">Add New
+    Announcement</a>
 
 <div class="container containerAnno">
     <br>
@@ -43,7 +44,7 @@
 
     <form th:action="@{/search/anno}">
         <input type="text" class="form-control" name="keyword" aria-describedby="button-addon2" id="keyword"
-               placeholder="Search" size="100" th:value="${keyword}" />
+               placeholder="Search" size="100" th:value="${keyword}"/>
         <br>
         <div class="input-group-append">
             <div class="col text-center">
@@ -85,11 +86,8 @@
         </tr>
 
 
-
-
         </tbody>
     </table>
-
 
 
 </div>

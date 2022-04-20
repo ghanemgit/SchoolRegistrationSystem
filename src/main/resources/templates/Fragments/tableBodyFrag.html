@@ -19,8 +19,8 @@
     <td th:text="${user.degree.displayValue}"></td>
     <td th:text="${user.userRole}"></td>
     <td th:text="${user.username}"></td>
-    <!--            <td th:text="${student.Class}"></td>-->
     <td>
+<!--        th:if="!${usernameEqual == user.username}"-->
         <a th:href="@{/users/edit/{id} (id=${user.getId()})}" class="btn btn-primary">Update</a>
         <a th:href="@{/users/{id} (id=${user.getId()})}" class="btn btn-danger">Delete</a>
     </td>
