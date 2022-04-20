@@ -62,5 +62,7 @@
 ### Student courses page(for Student)
 ![Student courses page](ProjectReadMeFile/Assert/studentCourse.jpg)
 
+### Tests
+![](ProjectReadMeFile/Assert/Test1.jpg)
 
-
+![](ProjectReadMeFile/Assert/Test2.jpg)
