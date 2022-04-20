@@ -18,6 +18,14 @@ repositories {
     mavenCentral()
 }
 
+jar {
+    enabled = false
+    manifest {
+        attributes('SchoolRegistrationSystemApplication': 'com.midproject.schoolregistrationsystem.SchoolRegistrationSystemApplication')
+    }
+}
+
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-security'
