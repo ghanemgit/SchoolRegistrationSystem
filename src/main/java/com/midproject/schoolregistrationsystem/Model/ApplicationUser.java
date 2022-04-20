@@ -2,7 +2,7 @@ package com.midproject.schoolregistrationsystem.Model;
 
 import com.midproject.schoolregistrationsystem.Enum.Degree;
 import com.midproject.schoolregistrationsystem.Enum.Gender;
-import com.midproject.schoolregistrationsystem.Enum.MaterialStatus;
+import com.midproject.schoolregistrationsystem.Enum.MaritalState;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -12,13 +12,12 @@ import javax.persistence.*;
 import java.util.*;
 
 
-
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
 @Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"username"})})
-public class ApplicationUser implements UserDetails{
+public class ApplicationUser implements UserDetails {
 
 
     @Setter(AccessLevel.NONE)
@@ -44,14 +43,14 @@ public class ApplicationUser implements UserDetails{
     private Gender gender;
 
     @Column(name = "age")
-    private int age;
+    private String age;
 
     @Column(name = "email")
     private String email;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "material_statues")
-    private MaterialStatus materialStatus;
+    @Column(name = "marital_state")
+    private MaritalState maritalState;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "degree")
@@ -61,14 +60,14 @@ public class ApplicationUser implements UserDetails{
     private String userRole;
 
 
-    @ManyToMany (cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "STUDENT_COURSE",
-            joinColumns = @JoinColumn(name="STUDENT_ID"),
+            joinColumns = @JoinColumn(name = "STUDENT_ID"),
             inverseJoinColumns = @JoinColumn(name = "COURSE_ID"))
     private List<Course> courses = new ArrayList<>();
 
 
-    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.REFRESH} , fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.REFRESH}, fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_role",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -76,21 +75,21 @@ public class ApplicationUser implements UserDetails{
     private Set<Role> roles = new HashSet<>();
 
 
-    public boolean hasRole(String roleName) {
-        Iterator<Role> iterator = this.roles.iterator();
-        while (iterator.hasNext()) {
-            Role role = iterator.next();
-            if (role.getName().equals(roleName)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
+//    public boolean hasRole(String roleName) {
+//        Iterator<Role> iterator = this.roles.iterator();
+//        while (iterator.hasNext()) {
+//            Role role = iterator.next();
+//            if (role.getName().equals(roleName)) {
+//                return true;
+//            }
+//        }
+//
+//        return false;
+//    }
 
 
     public ApplicationUser(String username, String password, String firstName, String lastName,
-                           Gender gender, int age, String email, MaterialStatus materialStatus, Degree degree, String userRole) {
+                           Gender gender, String age, String email, MaritalState maritalState, Degree degree, String userRole) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
@@ -98,7 +97,7 @@ public class ApplicationUser implements UserDetails{
         this.gender = gender;
         this.age = age;
         this.email = email;
-        this.materialStatus = materialStatus;
+        this.maritalState = maritalState;
         this.degree = degree;
         this.userRole = userRole;
     }
@@ -144,6 +143,7 @@ public class ApplicationUser implements UserDetails{
     public boolean isEnabled() {
         return true;
     }
+
     public List<Course> getCourses() {
         return courses;
     }
@@ -160,7 +160,6 @@ public class ApplicationUser implements UserDetails{
     public void setCourses(List<Course> courses) {
         this.courses = courses;
     }
-
 
 
     public void setRole(Role newRole) {

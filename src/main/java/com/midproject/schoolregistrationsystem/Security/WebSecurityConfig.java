@@ -20,7 +20,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private UserDetailsServiceImpl userDetailsService;
 
 
-
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -37,15 +36,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors().disable()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/login","/",
+                .antMatchers("/login", "/",
                         "/statics/**",
                         "/js/**",
                         "/css/**",
-                        "/img/**",
-                        "/profile").permitAll()
-                .antMatchers("/users/**","/announcement/**").hasAuthority("ADMIN")
-                .antMatchers("/courses/**","/student/**").hasAuthority("TEACHER")
+                        "/img/**").permitAll()
+                .antMatchers("/users/**", "/announcement/**").hasAuthority("ADMIN")
+                .antMatchers("/courses/**", "/student/**").hasAuthority("TEACHER")
                 .antMatchers("/my-courses").hasAuthority("STUDENT")
+                .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")

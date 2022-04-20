@@ -44,7 +44,7 @@ public class ApplicationUserServiceImp implements ApplicationUserService {
                 ,applicationUser.getGender()
                 ,applicationUser.getAge()
                 ,applicationUser.getEmail()
-                , applicationUser.getMaterialStatus()
+                , applicationUser.getMaritalState()
                 ,applicationUser.getDegree()
                 ,applicationUser.getUserRole());
 
@@ -82,7 +82,7 @@ public class ApplicationUserServiceImp implements ApplicationUserService {
         existingApplicationUser.setUserRole(applicationUser.getUserRole());
         existingApplicationUser.setDegree(applicationUser.getDegree());
         existingApplicationUser.setGender(applicationUser.getGender());
-        existingApplicationUser.setMaterialStatus(applicationUser.getMaterialStatus());
+        existingApplicationUser.setMaritalState(applicationUser.getMaritalState());
         existingApplicationUser.setPassword(passwordEncoder.encode(applicationUser.getPassword()));
 
         /*

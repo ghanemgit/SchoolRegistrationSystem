@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class AnnouncementsServiceImp implements AnnouncementsService{
+public class AnnouncementsServiceImp implements AnnouncementsService {
 
     @Autowired
     private AnnouncementsRepository announcementsRepository;
@@ -23,19 +23,16 @@ public class AnnouncementsServiceImp implements AnnouncementsService{
     }
 
 
-
     @Override
     public List<Announcement> getAllAnnouncements() {
         return announcementsRepository.findAll();
     }
 
 
-
     @Override
-    public void updateAnnouncements(Announcement announcement,Long id) {
+    public void updateAnnouncements(Announcement announcement, Long id) {
 
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
 
 
         Announcement newAnnouncement = getAnnouncementsById(id);

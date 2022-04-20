@@ -1,4 +1,5 @@
 package com.midproject.schoolregistrationsystem.Service;
+
 import com.midproject.schoolregistrationsystem.Model.ApplicationUser;
 import com.midproject.schoolregistrationsystem.Repositories.ApplicationUserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-
 
 
     private final ApplicationUserRepository applicationUserRepository;
@@ -23,14 +23,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         System.out.println("This is username:" + username);
         System.out.println("---------------");
         ApplicationUser account = applicationUserRepository.findApplicationUserByUsername(username);
-        if(account == null){
+        if (account == null) {
             System.out.print("User Not Found");
             throw new UsernameNotFoundException(username + "Not Found!");
         }
         return account;
     }
-
-
 
 
 }

@@ -3,16 +3,12 @@ package com.midproject.schoolregistrationsystem.Controller;
 import com.midproject.schoolregistrationsystem.Model.Announcement;
 import com.midproject.schoolregistrationsystem.Model.ApplicationUser;
 import com.midproject.schoolregistrationsystem.Service.AnnouncementsService;
-import com.midproject.schoolregistrationsystem.Service.ApplicationUserService;
 import com.midproject.schoolregistrationsystem.Service.ApplicationUserServiceImp;
-import com.midproject.schoolregistrationsystem.Service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -27,45 +23,35 @@ public class ApplicationUserController {
     ApplicationUserServiceImp applicationUserService;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
-
-    @Autowired
     private AnnouncementsService announcementsService;
-    @Autowired
-    private RoleService roleService;
-
-    @Autowired
-    private UserDetailsService userDetailsService;
-
-
-
 
 
     ///////////////////////////Get User from the database according to roles\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
     @GetMapping("/users")
-    public String listUsers(Model model){
+    public String listUsers(Model model) {
 
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("usernameEqual",userDetails.getUsername());
         model.addAttribute("users", applicationUserService.getAllApplicationUser());
         return "Admin/users";
 
     }
 
 
-
     ///////////////////////////Get User from the database according to roles\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-
-
-
 
 
     ///////////////////////////Create New User and giving him the role\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
     @GetMapping("/users/new")
-    public String createUserForm(Model model){
+    public String createUserForm(Model model) {
 
         ApplicationUser applicationUser = new ApplicationUser();
         model.addAttribute("user", applicationUser);
+
+
         return "Admin/createUser";
     }
+
     @PostMapping("/users/new")
     public String saveUser(@ModelAttribute("user") ApplicationUser applicationUser) {
 
@@ -80,7 +66,7 @@ public class ApplicationUserController {
 
     ///////////////////////////////////////////Edit existing User \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
     @GetMapping("/users/edit/{id}")
-    public String editUserForm(@PathVariable Long id, Model model){
+    public String editUserForm(@PathVariable Long id, Model model) {
 
         model.addAttribute("user", applicationUserService.getApplicationUserById(id));
         return "Admin/editUser";
@@ -88,9 +74,9 @@ public class ApplicationUserController {
     }
 
     @PostMapping("/users/{id}")
-    public String updateUser(@PathVariable Long id, @ModelAttribute("admin") ApplicationUser applicationUser){
+    public String updateUser(@PathVariable Long id, @ModelAttribute("admin") ApplicationUser applicationUser) {
 
-        applicationUserService.updateApplicationUser(applicationUser,id);
+        applicationUserService.updateApplicationUser(applicationUser, id);
         return "redirect:/users?updated";
     }
     ///////////////////////////////////////////Edit existing User \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -98,7 +84,7 @@ public class ApplicationUserController {
 
     ///////////////////////////////////////////Delete existing User \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
     @GetMapping("/users/{id}")
-    public String deleteUser(@PathVariable Long id){
+    public String deleteUser(@PathVariable Long id) {
 
         applicationUserService.deleteApplicationUserById(id);
 
@@ -120,27 +106,27 @@ public class ApplicationUserController {
     /////////////////////////////////Search on existing User in the database \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 
-
     /////////////////////////////////Get all stuff about Announcements \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
     @GetMapping("/announcements")
-    public String getAllAnnouncements(Model model){
+    public String getAllAnnouncements(Model model) {
 
-        model.addAttribute("announcements",announcementsService.getAllAnnouncements());
+        model.addAttribute("announcements", announcementsService.getAllAnnouncements());
         return "Announcement/announcements";
     }
 
     @GetMapping("/announcement/add")
-    public String getAnnouncementsForm(Model model){
+    public String getAnnouncementsForm(Model model) {
 
         Announcement annoYhy = new Announcement();
 
-        model.addAttribute("annoThy",annoYhy);
+        model.addAttribute("annoThy", annoYhy);
 
         return "Announcement/annoForm";
     }
+
     @PostMapping("/announcement/new")
-    public String addNewAnnouncements(@ModelAttribute(name = "annoThy") Announcement announcement){
+    public String addNewAnnouncements(@ModelAttribute(name = "annoThy") Announcement announcement) {
 
         announcementsService.addNewAnnouncements(announcement);
 
@@ -148,22 +134,23 @@ public class ApplicationUserController {
     }
 
     @GetMapping("/announcement/edit/{id}")
-    public String editAnnoForm(@PathVariable Long id, Model model){
+    public String editAnnoForm(@PathVariable Long id, Model model) {
 
         model.addAttribute("annoThy", announcementsService.getAnnouncementsById(id));
         return "Announcement/editAnno";
 
     }
-    @PostMapping("/announcement/{id}")
-    public String updateAnnouncements(@PathVariable Long id,@ModelAttribute(name = "annoThy") Announcement announcement){
 
-        announcementsService.updateAnnouncements(announcement,id);
+    @PostMapping("/announcement/{id}")
+    public String updateAnnouncements(@PathVariable Long id, @ModelAttribute(name = "annoThy") Announcement announcement) {
+
+        announcementsService.updateAnnouncements(announcement, id);
 
         return "redirect:/announcements?updated";
     }
 
     @GetMapping("/announcement/{id}")
-    public String deleteAnnouncements(@PathVariable Long id){
+    public String deleteAnnouncements(@PathVariable Long id) {
 
         announcementsService.deleteAnnouncementsById(id);
 

@@ -15,8 +15,9 @@
         <div class="row justify-content-center">
             <div class="col-md-12 text-center">
                 <span class="display-1 d-block">Oops ! </span>
-                <div class="mb-4 lead">Something went wrong .. </div>
-                <a href="/" class="btn btn-link">Back to Home</a>
+                <div class="mb-4 lead">Something went wrong ...</div>
+                <a href="/logout" class="btn btn-link">Back to Home</a>
+                <h2 style="color: red" th:text = "'Status:' +${status}"></h2>
             </div>
         </div>
     </div>

@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class LoginController {
 
 
-
-
     @GetMapping("/login")
     public String getLoginPage() {
         return "login";
@@ -18,7 +16,7 @@ public class LoginController {
 
 
     @GetMapping("/")
-    public String getHome(){
+    public String getHome() {
 
         return "redirect:/login";
     }

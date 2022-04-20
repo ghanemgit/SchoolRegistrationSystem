@@ -17,7 +17,7 @@
 
 <div th:replace="Fragments/adminNav.html :: topNavigation"></div>
 <br>
-<h1>Users Management System</h1>
+<h1 style="margin-left: 20px">Users Management System</h1>
 <hr>
 <br>
 <a th:href="@{/users/new}" class="btn btn-primary btn-lg btn-inline" style="margin-left: 100px">Add New User</a>
@@ -44,8 +44,8 @@
     </div>
 
         <form th:action="@{/search}">
-            <button type="text" class="form-control" name="keyword" aria-describedby="button-addon2" id="keyword"
-                   placeholder="Search" size="100" th:value="${keyword}" ></button>
+            <input type="text" class="form-control" name="keyword" aria-describedby="button-addon2" id="keyword"
+                   placeholder="Search" size="100" th:value="${keyword}" ></input>
             <br>
             <div class="input-group-append">
                 <div class="col text-center">
@@ -57,24 +57,22 @@
     <br>
 
 
-    <h1>Admins</h1>
-    <hr>
-    <table class="table table-striped table-bordered">
-        <thead class="table-dark">
-        <div th:replace="Fragments/tableHeadFrag.html :: tableHead"></div>
-        </thead>
-        <tbody>
+<!--    <h1>Admins</h1>-->
+<!--    <hr>-->
+<!--    <table class="table table-striped table-bordered">-->
+<!--        <thead class="table-dark">-->
+<!--        <div th:replace="Fragments/tableHeadFrag.html :: tableHead"></div>-->
+<!--        </thead>-->
+<!--        <tbody>-->
 
-        <tr th:each="user: ${users}">
-            <div th:if="${user.userRole.equals('Admin')}">
-                <div th:replace="Fragments/tableBodyFrag.html :: tableBody"></div>
+<!--        <tr th:each="user: ${users}">-->
+<!--            <div th:if="${user.userRole.equals('Admin')}">-->
+<!--                <div th:replace="Fragments/tableBodyFrag.html :: tableBody"></div>-->
 
-            </div>
-        </tr>
-
-
-        </tbody>
-    </table>
+<!--            </div>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--    </table>-->
 
 
 

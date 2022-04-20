@@ -38,13 +38,10 @@
                 type="text"
                 th:field="*{name}"
                 class="form-control mb-4 col-4"
-                placeholder="Name" />
+                placeholder="Name" required/>
 
-        <input
-                type="text"
-                th:field="*{description}"
-                class="form-control mb-4 col-4"
-                placeholder="description" />
+        <textarea rows="10" cols="40" name="description" th:field="*{description}"
+                  placeholder="Description" class="form-control" required></textarea>
 
         <button type="submit" class="btn btn-info col-2">Save</button>
 

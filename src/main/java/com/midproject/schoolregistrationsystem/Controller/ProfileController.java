@@ -18,33 +18,33 @@ public class ProfileController {
     @Autowired
     private ApplicationUserService applicationUserService;
 
-   @Autowired
-   private AnnouncementsService announcementsService;
+    @Autowired
+    private AnnouncementsService announcementsService;
 
+    /////////////////////////////////Get all user profile page according to role \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
     @GetMapping("/profile")
-    public String getProfilePage(Model model){
+    public String getProfilePage(Model model) {
 
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         ApplicationUser applicationUser = applicationUserService.findApplicationUserByUsername(userDetails.getUsername());
 
-        model.addAttribute("username",userDetails.getUsername());
-        model.addAttribute("name",(applicationUser.getFirstName()+" "+applicationUser.getLastName()));
-        model.addAttribute("email",applicationUser.getEmail());
-        model.addAttribute("age",applicationUser.getAge());
-        model.addAttribute("gender",applicationUser.getGender());
-        model.addAttribute("material",applicationUser.getMaterialStatus());
-        model.addAttribute("position",applicationUser.getUserRole());
-        model.addAttribute("id",applicationUser.getId());
-        model.addAttribute("degree",applicationUser.getDegree());
+        model.addAttribute("username", userDetails.getUsername());
+        model.addAttribute("name", (applicationUser.getFirstName() + " " + applicationUser.getLastName()));
+        model.addAttribute("email", applicationUser.getEmail());
+        model.addAttribute("age", applicationUser.getAge());
+        model.addAttribute("gender", applicationUser.getGender().getDisplayValue());
+        model.addAttribute("material", applicationUser.getMaritalState().getDisplayValue());
+        model.addAttribute("position", applicationUser.getUserRole());
+        model.addAttribute("id", applicationUser.getId());
+        model.addAttribute("degree", applicationUser.getDegree().getDisplayValue());
 
-        model.addAttribute("announcements",announcementsService.getAllAnnouncements());
+        model.addAttribute("announcements", announcementsService.getAllAnnouncements());
 
 
         return "profile";
 
     }
-
-
+    /////////////////////////////////Get all user profile page according to role \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 
 }
