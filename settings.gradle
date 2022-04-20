@@ -1,9 +1,1 @@
 rootProject.name = 'SchoolRegistrationSystem'
-
-
-tasks.getByName<Jar>("jar") {
-    enabled = false
-    manifest {
-        attributes["Main-Class"] = "com.example.demo.DemoApplicationKt"
-    }
-}
