@@ -7,31 +7,27 @@
 
 ### [Group agreement](ProjectReadMeFile/TeamAgreement/TeamAgreement.md)
 
-### [Daily Project achievements Report](ProjectReadMeFile)
-
 ### [Begin Wireframes & Software Requirements](ProjectReadMeFile/BeginWireframes&SoftwareRequirements.md)
 
 
 ## About Project
-#### In this project, we created a web page represent school management system that allow admin(register) to manages a group of students, teachers and other admins, where users are added, modified, or deleted from the system. and we allowed teachers to add courses to system and add/delete students to/from these courses.
-#### And the last thing is we make a section responsible to publish the Advertisement for different department in school and managed by admins.
+* In this project, we created A web page allows the admin(register) to manage a group of students, teachers, and other admins, where users are added, modified or deleted from the system. and we allowed teachers to add courses to the system and add/delete students to/from these courses.
+* And the last thing is we make a section responsible to publish the Advertisement for different department in school and managed by admins.
+* We Built this project with Java, Spring boot framework in backend and styled components for frontend Html, CSS, and Bootstrap with thymeleaf and PostgreSQL Database.
 
 
-## How to explore our project
-### You can see The core of our project in this package [here](src/main/java/com/midproject/schoolregistrationsystem)
-### The guide to understand our project by follow this tree template and so on.
+<h3 align="left">Languages and Tools:</h3>
+<p align="left"> <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/> </a> <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/> </a> <a href="https://www.java.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="40" height="40"/> </a> <a href="https://www.postgresql.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original-wordmark.svg" alt="postgresql" width="40" height="40"/> </a> <a href="https://spring.io/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/springio/springio-icon.svg" alt="spring" width="40" height="40"/> </a> <a href="https://www.thymeleaf.org/" target="_blank" rel="noreferrer"> <img src="https://www.thymeleaf.org/images/thymeleaf.png" alt="css3" width="40" height="40"/> </a></p>
 
-                                       │───Example(package)
-                                           │   Example.java(model)
-                                           │   ExampleController.java
-                                           │   ExampleService.java
-                                           │   ExampleServiceImp.java
-                                           │   ExampleRepository.java
-                                    
- 
+## How to run our project
+* You must have a postgresSQL.
+* You must start postfresSQL in terminal using `pgstart`.
+* Create database using `CREATE DATABASE 'DATABASE NAME'`.
+* Go to `application.properties` in your project and update the database information you created.
+* Run the project and go to [http://localhost:8080/](http://localhost:8080/).
 
 
-## Screenshot of project
+### Screenshots of project
 
 ### Login page
 
