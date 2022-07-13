@@ -27,38 +27,62 @@
 * Run the project and go to [http://localhost:8080/](http://localhost:8080/).
 
 
-### Screenshots of project
+# Screenshots of project
+
+
 
 ### Login page
 
-![Login page](ProjectReadMeFile/Assert/login.jpg)
+<img src="ProjectReadMeFile/Assert/login.jpg" alt="Login page"  width="900" />
+
+---------
 
 ### Profile page
-![information](ProjectReadMeFile/Assert/profile1.jpg)
-![Announcements](ProjectReadMeFile/Assert/profile2.jpg)
+
+
+<img src="ProjectReadMeFile/Assert/profile1.jpg" alt="profile"  width="900" />  
+<img src="ProjectReadMeFile/Assert/profile1.jpg" alt="profile"  width="900"  />
+
+-------
 
 ### Users management page
-![Users management page](ProjectReadMeFile/Assert/userManagementSystem.jpg)
+
+<img src="ProjectReadMeFile/Assert/userManagementSystem.jpg" alt=" Users management paget"  width="900"  />
+
+------
 
 ### Add user form
-![Add user form](ProjectReadMeFile/Assert/newUserForm.jpg)
+<img src="ProjectReadMeFile/Assert/newUserForm.jpg" alt="Add user forme"  width="900" />  
+
+-----
 
 ### Announcement management page
-![Announcement management page](ProjectReadMeFile/Assert/AnnoSys.jpg)
+
+<img src="ProjectReadMeFile/Assert/AnnoSys.jpg" alt="Announcement management page"  width="900" />  
+
 
 ### Courses page
-![Courses page](ProjectReadMeFile/Assert/coursesList.jpg)
+<img src="ProjectReadMeFile/Assert/coursesList.jpg" alt="Courses page"  width="900" />  
+
+------
 
 ### Student list page(for Teacher)
-![Student list page](ProjectReadMeFile/Assert/studentList.jpg)
+<img src="ProjectReadMeFile/Assert/studentList.jpg" alt="tudent list page"  width="900" />  
+
+------
 
 ### Add course to student page(by Teacher)
-![Add course to student](ProjectReadMeFile/Assert/addStudentCourse.jpg)
+<img src="ProjectReadMeFile/Assert/addStudentCourse.jpg" alt="Add course to student"  width="900" />  
+
+------
 
 ### Student courses page(for Student)
-![Student courses page](ProjectReadMeFile/Assert/studentCourse.jpg)
+<img src="ProjectReadMeFile/Assert/studentCourse.jpg" alt="Student courses"  width="900" />  
+
+---------
 
 ### Tests
-![](ProjectReadMeFile/Assert/Test1.jpg)
+<img src="ProjectReadMeFile/Assert/Test1.jpg" alt="testing"  width="900" />  
+<img src="ProjectReadMeFile/Assert/Test2.jpg" alt="testing"  width="900" />  
 
-![](ProjectReadMeFile/Assert/Test2.jpg)
+
